@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Important\ASDK\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="C:\Dropbox\Projects\Java\Andriod\Manabu\app\build\intermediates\pre-dexed\debug\constraint-layout-solver-1.0.2_cd5e6b10cf1e87031a1d713ff0ec075255068e61.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Глазунов\.android\build-cache\21ac764070c8f21b4c08bb7232e5267387c9d972\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="C:\Dropbox\Projects\Java\Andriod\Manabu\app\build\intermediates\pre-dexed\debug\classes_5c7f1c793ec60018c14d64fb251f1598843f37da.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Глазунов\.android\build-cache\c99555e1e7536756836afc9d9d154187d2454d25\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="C:\Dropbox\Projects\Java\Andriod\Manabu\app\build\intermediates\pre-dexed\debug\classes_4227cee41c129d6d396af5947ff032aee27a4ef8.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Important\ASDK\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="C:\Dropbox\Projects\Java\Andriod\Manabu\app\build\intermediates\transforms\dex\debug\folders\1000\10\constraint-layout-solver-1.0.2_cd5e6b10cf1e87031a1d713ff0ec075255068e61\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Глазунов\.android\build-cache\b31ee41434ff9e745ab086840ddaaf343a43078d\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="C:\Dropbox\Projects\Java\Andriod\Manabu\app\build\intermediates\pre-dexed\debug\classes_cc8593f150119f692a9a0c0dd4514c8bae6e12f1.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Глазунов\.android\build-cache\b31ee41434ff9e745ab086840ddaaf343a43078d\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="C:\Dropbox\Projects\Java\Andriod\Manabu\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_cc8593f150119f692a9a0c0dd4514c8bae6e12f1\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Глазунов\.android\build-cache\5cb2b2be5cbe608ed2a8d13ed5e5dfd42e0ea989\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="C:\Dropbox\Projects\Java\Andriod\Manabu\app\build\intermediates\pre-dexed\debug\classes_4026daa856d56b0ae6f689edab93b98ff8c881d2.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Important\ASDK\extras\android\m2repository\com\android\support\support-annotations\25.3.1\support-annotations-25.3.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="C:\Dropbox\Projects\Java\Andriod\Manabu\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.3.1_f378ee955ff15306bf8dc199961759037895896c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Dropbox\Projects\Java\Andriod\Manabu\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="C:\Dropbox\Projects\Java\Andriod\Manabu\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_0402b0fd7c9519843f2b18fd668242201ec9ab58\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Глазунов\.android\build-cache\26edbc841b339e65f6a40c8a68f7b887485383e6\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="C:\Dropbox\Projects\Java\Andriod\Manabu\app\build\intermediates\pre-dexed\debug\classes_fdcbd4d52f27fef0d99923d16eeb6661a09dd07f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Глазунов\.android\build-cache\96b1381a6762c20054e4de15861fbf5b489775b3\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Dropbox\Projects\Java\Andriod\Manabu\app\build\intermediates\pre-dexed\debug\classes_da907d55b783fee7785bd633cc0e84939787a23c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Important\ASDK\extras\android\m2repository\com\android\support\support-annotations\25.3.1\support-annotations-25.3.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="C:\Dropbox\Projects\Java\Andriod\Manabu\app\build\intermediates\pre-dexed\debug\support-annotations-25.3.1_f378ee955ff15306bf8dc199961759037895896c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Глазунов\.android\build-cache\c10ae676b02476cc025995f7a26dc498d4ea88d7\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="C:\Dropbox\Projects\Java\Andriod\Manabu\app\build\intermediates\pre-dexed\debug\classes_17b261a994027bd621c00fd2e0e325c083a50069.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Глазунов\.android\build-cache\914b37e52d2042aefafd44d575b52a570e691b3f\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="C:\Dropbox\Projects\Java\Andriod\Manabu\app\build\intermediates\pre-dexed\debug\classes_0cd326b95e348d0074e75881964eabd4a20887f6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Глазунов\.android\build-cache\5ac47408881d8542981bd548f17745bda6e38b67\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="C:\Dropbox\Projects\Java\Andriod\Manabu\app\build\intermediates\pre-dexed\debug\classes_eba04f5e0e851fafa9c1845dc6ab758677a29905.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Глазунов\.android\build-cache\914b37e52d2042aefafd44d575b52a570e691b3f\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="C:\Dropbox\Projects\Java\Andriod\Manabu\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_0cd326b95e348d0074e75881964eabd4a20887f6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Глазунов\.android\build-cache\5ac47408881d8542981bd548f17745bda6e38b67\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="C:\Dropbox\Projects\Java\Andriod\Manabu\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_eba04f5e0e851fafa9c1845dc6ab758677a29905\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Dropbox\Projects\Java\Andriod\Manabu\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="cfbe8a86b3d8d9dbdb1ee6cce886ba95d01f1442">
+        <dex dex="C:\Dropbox\Projects\Java\Andriod\Manabu\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_9e1aa668651c31bdc9a088755273442b057e80fc\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Глазунов\.android\build-cache\0c16fccbc25309fe375baa0bbb2fc5ccc70be7c1\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="C:\Dropbox\Projects\Java\Andriod\Manabu\app\build\intermediates\pre-dexed\debug\classes_f7b87f060be8c53a3127c0d43e6bca174fd09c0c.jar" />
+    </item>
+
+</items>
