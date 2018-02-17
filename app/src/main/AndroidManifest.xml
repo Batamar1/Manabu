@@ -9,8 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity
-            android:name=".MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,9 +21,11 @@
             android:label="@string/title_activity_login" />
         <activity
             android:name=".LessonCardActivity"
-            android:label="Название колоды">
-
-        </activity>
+            android:label="Название колоды"></activity>
+        <activity
+            android:name=".RepeatCardActivity"
+            android:label="@string/title_activity_repeat_card"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -12,4 +12,5 @@
     <string name="drawer_item_open_source">Open Source</string>
     <string name="drawer_item_logout">Выйти</string>
     <string name="asdasd">Напишу какой-нибудь большой текст для теста этого блока. Напишу какой-нибудь большой текст для теста этого блока. Напишу какой-нибудь большой текст для теста этого блока. Напишу какой-нибудь большой текст для теста этого блока.</string>
+    <string name="title_activity_repeat_card">RepeatCardActivity</string>
 </resources>
