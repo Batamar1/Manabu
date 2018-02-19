@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -21,6 +22,10 @@ import me.manabu.Controllers.LoginController;
 public class MainActivity extends AppCompatActivity {
 
     private Button repeatsButton, lessonsButton;
+
+    private String[] mPlanetTitles;
+    private DrawerLayout mDrawerLayout;
+    private ListView mDrawerList;
 
     private boolean doubleBackToExitPressedOnce = false;
 
@@ -37,16 +42,26 @@ public class MainActivity extends AppCompatActivity {
         lessonsButton = (Button) findViewById(R.id.button_main_lessons);
         repeatsButton = (Button) findViewById(R.id.button_main_repeats);
 
-        lessonsButton.setText("Уроки");
-        repeatsButton.setText("Повторения");
+        //lessonsButton.setText("Уроки");
+        //repeatsButton.setText("Повторения");
 
-        lessonsButton.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(v.getContext(), LessonCardActivity.class);
-                startActivity(i);
-            }
-        });
+//        lessonsButton.setOnClickListener(new Button.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(v.getContext(), LessonCardActivity.class);
+//                startActivity(i);
+//            }
+//        });
+
+        mPlanetTitles = new String[]{"Rofl", "ky"};
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerList = (ListView) findViewById(R.id.left_drawer);
+
+        // Set the adapter for the list view
+        mDrawerList.setAdapter(new ArrayAdapter<String>(this,
+                R.layout.drawer_list_item, mPlanetTitles));
+        // Set the list's click listener
+        //mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
     }
 
