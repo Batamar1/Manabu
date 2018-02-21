@@ -1,21 +1,19 @@
 package me.manabu;
 
-import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.mikepenz.materialdrawer.DrawerBuilder;
 
 import me.manabu.Controllers.LoginController;
 
@@ -26,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private String[] mPlanetTitles;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
+    private ActionBarDrawerToggle mDrawerToggle;
 
     private boolean doubleBackToExitPressedOnce = false;
 
@@ -45,23 +44,7 @@ public class MainActivity extends AppCompatActivity {
         //lessonsButton.setText("Уроки");
         //repeatsButton.setText("Повторения");
 
-//        lessonsButton.setOnClickListener(new Button.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(v.getContext(), LessonCardActivity.class);
-//                startActivity(i);
-//            }
-//        });
-
-        mPlanetTitles = new String[]{"Rofl", "ky"};
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView) findViewById(R.id.left_drawer);
-
-        // Set the adapter for the list view
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-                R.layout.drawer_list_item, mPlanetTitles));
-        // Set the list's click listener
-        //mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+        new DrawerBuilder().withActivity(this).build();
 
     }
 
