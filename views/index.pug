@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title index
+  body
+    p= "Target: " +  target
+    p= "Mnemonic: " + mnemonic
+    p= "Desc: " + desc
+
+
+
+    form(method='POST', action="/", encType="multipart/form-data")
+      .field
+        p Название карточки
+        input.title(type='text' name='name')
+      .field
+        p Описание карточки
+        textarea.desc(name='desc' noresize)
+      input.submit(type='submit' value='Добавить')

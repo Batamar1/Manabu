@@ -1,0 +1,12 @@
+var admin = require('firebase-admin');
+
+admin.initializeApp({
+  credential: admin.credential.cert({
+    projectId: 'manabu-24fa5',
+    clientEmail: 'firebase-adminsdk-06ud9@manabu-24fa5.iam.gserviceaccount.com',
+    privateKey: '-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDb4vAeLLNxEa8u\nNbGBnxDXrVtJGkWH08/NYDJCCAT8MAvc984bSuvI2bPhRA2IJltjGuVmTWfVTAVq\nwswYoLLpvFpeRdiV+Bwr9BFiNu+T7vXNvxaxDcL/3EpbyVR1Yet5UBZv465KcHe7\n9S/epx3L1+H3/NwM8cXq3By52wvtFNRy0ZIz0iYHhlYsg/DejPZ8v3Pn+NG3/sfA\n1n7YmnbWdxqgsb39cKnoU0O5NfDkNHgVvUyuCb4By/CWc49ILihw5p8AKXvYu3OS\nJjnT6pUId/k/Tk4N2U+FcayZkf18yYuuZnacav6C39aVbiowQC6qiYj8dim5xr9o\nSDIHc0eFAgMBAAECggEAOz82GMNNpFEyBP71sank9WAiARwBkRwa2UkqsY0MntDp\nWWQx1jvFNUyngbJ+/Ojs5dK47ew8ZoYBzaboLFicbItSRCWIurvsB1HPn0mTGyaf\nd40d9Z3yJVO7e2jPh4NXWcwhB4vvCeKs+GmTuOgJiMPGALZSqnA4tlQRr2hcmcfr\nrO/g1R8iPSpNc63CQop5ZuALvZtLrFoKT9PHOb5cnBjuz0QzjbX4W6WaneqbnY1F\nN53C2sB/L07kRoJz9zom/0pI5R8GC6yhr9oOJXCvby0nRKCXsTznZ6pPT0lkQwXN\n4HvyztAUwDbiGWB9gf3RCpsIEsJuqVLjdkITEv7+bwKBgQDuKf4P0V68L8iDlR3U\ne7jksN/Eea47DlragEQuAKVzrjVXxp8CWfoBoOsrIM1LLCEaqxap98I+f16uRpPs\nFVpSqff4KXjrV5o2eSAfCS4JC96vtvY4XOACWhmh5fuDKDTiHoTgOuiAtC3s2fcP\ndjR9CazuZCq2Lrox1Ijf9BoUswKBgQDsWoipy58rELNeTyB+8tkdipYJmCiwmndC\nIN85GMQOo8IsCoe2ylv9FhSJiTg522g6XwCvkExxTDhsKsO3U0y1xJgV+d5WURcv\n02PUW2ZiVou50S4s/am5T4iBrARuglVIIQQQoBTgbZNp2R484e/9NgQMYTZYLt/r\nRzGpuZv+5wKBgAyXicg6UKDwgdB7LNWUKQVmWJ5htJWIv8L3ryMjg5vnJQjcBoIw\nUaiOYoCoPlJwJdvsGcmowMtfHplmP+Hmixz9wY+MWclPm2av5sPdT2LJDuAJc2Et\nf+Z/7wUBTNf1Yz5lUK8uTian4Bm6uHZH0KSfw1XjU+LH+64wx3/Xvx1DAoGAEcAy\n512tlJRqhDi5Hg+rErbn0cylsa3IKyVA3o7nmpnd6WTZEHdeNUHFRRcTK/U4fLnJ\n2WWi+BdbXXRQwqH07unW6j+b3Su17BeaNcavh88sK0Z0i1h5uLsqa2K56nrLYOFp\n5r2/E6PnIFn4FWZ6ma/G2g8q/7B1jLwKFM8l0h0CgYEAuETTwB2K+3UWdApnefUR\nbO1ZPe76ifzqVC3/Baa35nhSW2HX+mu1PF6iWKpfM31TisAQ1rm2l/qINkV0lQ+5\nKkGiRf+u0vPcKIPXluNYITny5Dk+64kcqH24wHO1Aa3gbt+8aFi08oo7PvRkPIYt\ndjGBovO1Vdu9x/qV8zuSAR0=\n-----END PRIVATE KEY-----\n'
+  }),
+  databaseURL: 'https://manabu-24fa5.firebaseio.com'
+});
+
+module.exports = admin;
