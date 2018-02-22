@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Manabu</string>
+
+    <!-- Main Activity -->
+    <string name="main_double_exit">One more time for app to close.</string>
+
     <string name="title_activity_login">LoginActivity</string>
     <string name="google_login_button_text">Войти через Google</string>
     <string name="facebook_login_button_text">Войти через Facebook</string>

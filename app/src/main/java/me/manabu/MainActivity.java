@@ -9,11 +9,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.model.DividerDrawerItem;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import me.manabu.Controllers.LoginController;
 
@@ -44,28 +50,41 @@ public class MainActivity extends AppCompatActivity {
         //lessonsButton.setText("Уроки");
         //repeatsButton.setText("Повторения");
 
-        new DrawerBuilder().withActivity(this).build();
+        //if you want to update the items at a later time it is recommended to keep it in a variable
+        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName(R.string.drawer_item_home);
+        SecondaryDrawerItem item2 = new SecondaryDrawerItem().withIdentifier(2).withName(R.string.drawer_item_settings);
+
+        //create the drawer and remember the `Drawer` result object
+        Drawer result = new DrawerBuilder()
+                .withActivity(this)
+                .withToolbar(toolbar)
+                .addDrawerItems(
+                        item1,
+                        new DividerDrawerItem(),
+                        item2,
+                        new SecondaryDrawerItem().withName(R.string.drawer_item_settings)
+                )
+                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                    @Override
+                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                        return false;// do something with the clicked item :D
+                    }
+                })
+                .build();
 
     }
 
     @Override
     public void onBackPressed() {
         if (doubleBackToExitPressedOnce) {
-                super.onBackPressed();
-                return;
-            }
+            super.onBackPressed();
+            return;
+        }
 
-            this.doubleBackToExitPressedOnce = true;
-            //TODO: В ресурсы
-            Toast.makeText(this, "Нажмите ещё раз чтобы выйти :)", Toast.LENGTH_SHORT).show();
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, getResources().getString(R.string.main_double_exit), Toast.LENGTH_SHORT).show();
 
-            new Handler().postDelayed(new Runnable() {
-
-                @Override
-                public void run() {
-                    doubleBackToExitPressedOnce = false;
-                }
-            }, 3000);
+        new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 3000);
     }
 
     private void redirectIfLogged() {
