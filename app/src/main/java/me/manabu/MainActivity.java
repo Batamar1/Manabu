@@ -7,6 +7,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -21,7 +22,15 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
+import java.util.List;
+
+import me.manabu.Api.Models.DeckModel;
 import me.manabu.Controllers.LoginController;
+import me.manabu.Helpers.NavigationDrawerHelper;
+import me.manabu.Helpers.RetrofitHelper;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,39 +47,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //Not logged? -> LoginActivity
         redirectIfLogged();
-        setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar2);
+        setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        NavigationDrawerHelper.init(this, toolbar);
 
         lessonsButton = (Button) findViewById(R.id.button_main_lessons);
         repeatsButton = (Button) findViewById(R.id.button_main_repeats);
 
-        //lessonsButton.setText("Уроки");
-        //repeatsButton.setText("Повторения");
+        lessonsButton.setText("Уроки");
+        repeatsButton.setText("Повторения");
 
-        //if you want to update the items at a later time it is recommended to keep it in a variable
-        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName(R.string.drawer_item_home);
-        SecondaryDrawerItem item2 = new SecondaryDrawerItem().withIdentifier(2).withName(R.string.drawer_item_settings);
 
-        //create the drawer and remember the `Drawer` result object
-        Drawer result = new DrawerBuilder()
-                .withActivity(this)
-                .withToolbar(toolbar)
-                .addDrawerItems(
-                        item1,
-                        new DividerDrawerItem(),
-                        item2,
-                        new SecondaryDrawerItem().withName(R.string.drawer_item_settings)
-                )
-                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
-                    @Override
-                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                        return false;// do something with the clicked item :D
-                    }
-                })
-                .build();
+        lessonsButton.setOnClickListener(view -> {
+            Intent intent = new Intent(view.getContext(), LessonCardActivity.class);
+            intent.putExtra("deckId", 2);
+            startActivity(intent);
+        });
 
     }
 

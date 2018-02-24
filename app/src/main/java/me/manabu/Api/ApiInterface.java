@@ -1,5 +1,8 @@
 package me.manabu.Api;
 
+import java.util.List;
+
+import me.manabu.Api.Models.DeckModel;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -15,6 +18,6 @@ public interface ApiInterface {
     @GET("/api/v1/auth/login")
     Call<ResponseBody> getAllDecks(@Body String body);
 
-    @GET("/api/v1/deck/{id}/lessons")
-    Call<ResponseBody> getLessonsFromDeck(@Path("id") String id, @Body String body);
+    @GET("/deck/{id}/lessons")
+    Call<List<DeckModel>> getLessonsFromDeck(@Path("id") int id);
 }
