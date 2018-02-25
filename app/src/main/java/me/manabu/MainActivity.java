@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         redirectIfLogged();
 
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar_include);
         setSupportActionBar(toolbar);
         NavigationDrawerHelper.init(this, toolbar);
 
