@@ -1,10 +1,6 @@
-package me.manabu.Helpers;
+package me.manabu.helpers;
 
-import android.util.Log;
-
-import java.util.List;
-
-import me.manabu.Api.ApiInterface;
+import me.manabu.api.ApiInterface;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 

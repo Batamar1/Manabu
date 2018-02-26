@@ -1,6 +1,4 @@
-package me.manabu.Api.Models;
-
-import com.google.gson.annotations.Expose;
+package me.manabu.api.Models;
 
 public class CardModel {
 

@@ -1,8 +1,6 @@
-package me.manabu.Api.Models;
+package me.manabu.api.Models;
 
 import com.google.gson.annotations.SerializedName;
-
-import java.util.HashMap;
 
 public class DeckModel {
 

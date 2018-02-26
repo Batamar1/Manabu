@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="me.manabu.RepeatCardActivity">
+    tools:context="me.manabu.activities.RepeatCardActivity">
 
     <include layout="@layout/content_repeat_card" />
 

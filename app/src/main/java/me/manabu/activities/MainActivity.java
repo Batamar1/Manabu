@@ -1,4 +1,4 @@
-package me.manabu;
+package me.manabu.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,30 +7,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.mikepenz.materialdrawer.Drawer;
-import com.mikepenz.materialdrawer.DrawerBuilder;
-import com.mikepenz.materialdrawer.model.DividerDrawerItem;
-import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
-import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
-import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
-
-import java.util.List;
-
-import me.manabu.Api.Models.DeckModel;
-import me.manabu.Controllers.LoginController;
-import me.manabu.Helpers.NavigationDrawerHelper;
-import me.manabu.Helpers.RetrofitHelper;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import me.manabu.R;
+import me.manabu.controllers.LoginController;
+import me.manabu.helpers.NavigationDrawerHelper;
 
 public class MainActivity extends AppCompatActivity {
 
