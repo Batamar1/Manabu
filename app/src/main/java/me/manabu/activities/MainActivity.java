@@ -21,11 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
     private Button repeatsButton, lessonsButton;
 
-    private String[] mPlanetTitles;
-    private DrawerLayout mDrawerLayout;
-    private ListView mDrawerList;
-    private ActionBarDrawerToggle mDrawerToggle;
-
     private boolean doubleBackToExitPressedOnce = false;
 
     @Override

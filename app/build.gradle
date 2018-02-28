@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        debug {
+            keyAlias 'manabu_dev_key'
+            keyPassword '123123'
+            storeFile file('C:/Dropbox/Projects/Java/Andriod/manabudevkey.jks')
+            storePassword '123123123'
+        }
+    }
     compileSdkVersion 25
     buildToolsVersion "26.0.2"
     defaultConfig {
@@ -10,16 +18,22 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.debug
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            signingConfig signingConfigs.debug
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    productFlavors {
     }
 }
 
@@ -34,7 +48,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.4.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:design:25.4.0'
-
+    //Google auth
+    compile 'com.google.android.gms:play-services-auth:11.8.0'
     //Retrofit, HTTP lib
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
@@ -45,7 +60,6 @@ dependencies {
     implementation 'com.mikepenz:fontawesome-typeface:5.0.6.0@aar'
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.5.2'
-
     //Tests
     testCompile 'junit:junit:4.12'
 }
