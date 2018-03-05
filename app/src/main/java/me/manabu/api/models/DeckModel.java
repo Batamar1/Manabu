@@ -1,4 +1,4 @@
-package me.manabu.api.Models;
+package me.manabu.api.models;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -11,20 +11,16 @@ import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
 import me.manabu.R;
 import me.manabu.helpers.AuthHelper;
-import me.manabu.helpers.NavigationDrawerHelper;
-
-import static me.manabu.helpers.AuthHelper.RC_SIGN_IN;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button signInButton;
+    public static final int RC_ACTIVITY_LOGIN = 100;
+    private static final int RC_LOGIN_GOOGLE = 101;
 
     private boolean doubleBackToExitPressedOnce = false;
 
@@ -33,9 +29,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        signInButton = (Button) findViewById(R.id.login_button_google);
+        Button signInButton = (Button) findViewById(R.id.login_button_google);
         signInButton.setOnClickListener(this);
-
     }
 
     @Override
@@ -43,7 +38,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()) {
             case R.id.login_button_google:
                 Intent signInIntent = AuthHelper.getClientForActivity(this).getSignInIntent();
-                startActivityForResult(signInIntent, RC_SIGN_IN);
+                startActivityForResult(signInIntent, RC_LOGIN_GOOGLE);
                 break;
         }
     }
@@ -52,13 +47,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(resultCode != RESULT_OK){
+        if(resultCode != RESULT_OK) {
             Log.d("LoginActivity", "onActivityResult: failed");
             return;
         }
 
-        switch (requestCode){
-            case RC_SIGN_IN:
+        switch (requestCode) {
+            case RC_LOGIN_GOOGLE:
                 Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
                 handleSignInResult(task);
                 break;
@@ -68,23 +63,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-            AuthHelper.signIn(this, account);
-            Toast.makeText(this, account.getIdToken(), Toast.LENGTH_LONG).show();
+            AuthHelper.signIn(account);
+            Log.d("LoginActivity", "handleSignInResult done.");
+            setResult(RESULT_OK);
             finish();
         } catch (ApiException e) {
             Toast.makeText(this,
                     getString(R.string.login_google_sign_in_error) + ", #" + e.getStatusCode(),
                     Toast.LENGTH_LONG).show();
-            Log.d("LoginActivity", "Sign in failed: " + e.getStatusCode());
+            Log.d("LoginActivity", "handleSignInResult failed: " + e.getStatusCode());
         }
     }
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-
         if (doubleBackToExitPressedOnce) {
-            finish();
+            super.onBackPressed();
             return;
         }
 

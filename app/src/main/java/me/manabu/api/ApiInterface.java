@@ -2,7 +2,7 @@ package me.manabu.api;
 
 import java.util.List;
 
-import me.manabu.api.Models.DeckModel;
+import me.manabu.api.models.DeckModel;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;

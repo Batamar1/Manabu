@@ -59,6 +59,7 @@ dependencies {
 
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.5.2'
+    compile 'jp.wasabeef:fresco-processors:2.1.0'
 
     //Google Sign In Button
     compile 'com.shobhitpuri.custombuttons:google-signin:1.0.0'

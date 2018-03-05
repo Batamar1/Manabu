@@ -5,24 +5,19 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 
 import me.manabu.R;
 import me.manabu.activities.MainActivity;
 
 public class AuthHelper {
 
-    public static final int RC_SIGN_IN = 111;
     private static final String IS_LOGGED = "AUTH_IS_LOGGED";
 
     private static SharedPreferences sPref;
@@ -41,39 +36,42 @@ public class AuthHelper {
     }
 
     public static boolean isSignedIn(Activity activity) {
-        sPref = PreferenceManager.getDefaultSharedPreferences(activity);
-        boolean loginState = sPref.getBoolean(IS_LOGGED, false);
-        Log.d("AuthHelper", "isSignedIn: " + String.valueOf(loginState));
-        return loginState;
+        if(googleSignInAccount == null || googleSignInAccount.getAccount() == null) {
+            Log.d("AuthHelper", "isSignedIn false");
+            return false;
+        }
+        Log.d("AuthHelper", "isSignedIn true");
+        return true;
     }
 
-    public static void signIn(Activity activity, GoogleSignInAccount account) {
+    public static void signIn(GoogleSignInAccount account) {
         googleSignInAccount = account;
-        sPref = PreferenceManager.getDefaultSharedPreferences(activity);
-        SharedPreferences.Editor editor = sPref.edit();
-        editor.putBoolean(IS_LOGGED, true);
-        editor.apply();
         Log.d("AuthHelper", "signIn done");
-    }
-
-    public static void silentSignIn(Activity activity) {
-
     }
 
     public static void signOut(Activity activity) {
         GoogleSignInClient client = getClientForActivity(activity);
         client.signOut()
                 .addOnSuccessListener(aVoid -> {
-                    sPref = PreferenceManager.getDefaultSharedPreferences(activity);
-                    SharedPreferences.Editor editor = sPref.edit();
-                    editor.putBoolean(IS_LOGGED, false);
-                    editor.apply();
-
+//                    sPref = PreferenceManager.getDefaultSharedPreferences(activity);
+//                    SharedPreferences.Editor editor = sPref.edit();
+//                    editor.putBoolean(IS_LOGGED, false);
+//                    editor.apply();
                     googleSignInAccount = null;
+
+                    Intent intent = new Intent(activity, MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    activity.startActivity(intent);
 
                     Log.d("AuthHelper", "signOut success!");
                 })
-                .addOnFailureListener(e -> Log.d("AuthHelper", "signOut failed!"))
+                .addOnFailureListener(e -> {
+                    Toast.makeText(
+                            activity,
+                            activity.getResources().getString(R.string.main_double_exit),
+                            Toast.LENGTH_SHORT).show();
+                    Log.d("AuthHelper", "signOut failed!");
+                })
                 .addOnCompleteListener(e -> Log.d("AuthHelper", "signOut done!"));
     }
 

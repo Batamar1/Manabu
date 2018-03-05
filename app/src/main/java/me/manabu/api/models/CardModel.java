@@ -1,4 +1,4 @@
-package me.manabu.api.Models;
+package me.manabu.api.models;
 
 public class CardModel {
 

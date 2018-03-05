@@ -8,6 +8,7 @@
     <string name="login_title_activity">Login</string>
     <string name="login_google_button">Sign in through Google</string>
     <string name="login_google_sign_in_error">Sign in failed</string>
+    <string name="login_sign_out_failed">Can\'t sign out for some reason</string>
 
     <string name="drawer_item_home">Home</string>
     <string name="drawer_item_free_play">Free Play</string>
@@ -26,4 +27,5 @@
     <string name="login_text_auth">Sign in to start learning :)</string>
     
     <string name="server_client_id">238671417209-3aoe6ge4h8ke9ot5seturcosqtgg11ss.apps.googleusercontent.com</string>
+    <string name="drawer_item_decks">Decks</string>
 </resources>

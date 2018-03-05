@@ -3,7 +3,6 @@ package me.manabu.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -13,24 +12,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.mikepenz.materialdrawer.Drawer;
 
 import me.manabu.R;
 import me.manabu.helpers.AuthHelper;
 import me.manabu.helpers.NavigationDrawerHelper;
 
+import static me.manabu.activities.LoginActivity.RC_ACTIVITY_LOGIN;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button repeatsButton, lessonsButton;
     private Toolbar toolbar;
+    private Drawer drawer;
 
     private boolean doubleBackToExitPressedOnce = false;
-
-    private final static int RC_LOGIN = 111;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,13 +40,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //Not logged? -> LoginActivity
         if (!AuthHelper.isSignedIn(this)) {
-            Log.d("TAG1", "123");
             redirectIfNotSignedIn();
         } else {
-            Log.d("TAG1", "333");
+            initDrawer();
         }
-
-        initDrawer();
 
         lessonsButton = (Button) findViewById(R.id.main_button_lessons);
         repeatsButton = (Button) findViewById(R.id.main_button_repeats);
@@ -74,6 +67,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onBackPressed() {
+        if(drawer.isDrawerOpen()){
+            drawer.closeDrawer();
+            return;
+        }
+
         if (doubleBackToExitPressedOnce) {
             super.onBackPressed();
             return;
@@ -87,14 +85,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void redirectIfNotSignedIn() {
         Intent i = new Intent(this, LoginActivity.class);
-        startActivityForResult(i, RC_LOGIN);
+        startActivityForResult(i, RC_ACTIVITY_LOGIN);
+
+        Log.d("MainActivity", "redirectIfNotSignedIn.");
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == RC_LOGIN && resultCode == RESULT_OK) {
+        if (requestCode == RC_ACTIVITY_LOGIN && resultCode == RESULT_OK) {
             initDrawer();
-            Log.d("MainActivity", "onActivityResult notFailed.");
+            Log.d("MainActivity", "onActivityResult ok.");
         } else {
             Log.d("MainActivity", "onActivityResult failed.");
         }
@@ -108,6 +108,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initDrawer(){
         NavigationDrawerHelper.init(this);
-        NavigationDrawerHelper.draw(this, toolbar);
+        drawer = NavigationDrawerHelper.getDrawer(this, toolbar);
     }
 }
