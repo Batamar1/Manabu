@@ -3,6 +3,7 @@
     package="me.manabu">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,17 +14,25 @@
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".activities.LoginActivity"
-            android:label="@string/title_activity_login" />
+            android:label="@string/login_title_activity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".activities.LessonCardActivity"
-            android:label="Название колоды"></activity>
+            android:label="Название колоды" />
         <activity
             android:name=".activities.RepeatCardActivity"
-            android:label="@string/title_activity_repeat_card"></activity>
+            android:label="@string/title_activity_repeat_card" />
+        <activity android:name=".activities.DecksActivity" />
+        <activity android:name=".activities.CreateDeckActivity" />
+        <activity android:name=".activities.EditDeckActivity" />
+        <activity android:name=".activities.EditDeckItemActivity"></activity>
     </application>
+
 </manifest>

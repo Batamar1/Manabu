@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
@@ -18,9 +19,9 @@ import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
-import me.manabu.controllers.LoginController;
 import me.manabu.activities.LoginActivity;
 import me.manabu.R;
+import me.manabu.activities.MainActivity;
 
 public class NavigationDrawerHelper {
 
@@ -28,8 +29,9 @@ public class NavigationDrawerHelper {
 
     private static PrimaryDrawerItem main_page;
     private static SecondaryDrawerItem logout;
+    private static ProfileDrawerItem profileDrawerItem;
 
-    public static void init(Activity activity, Toolbar toolbar) {
+    public static void init(Activity activity) {
 
         main_page = new PrimaryDrawerItem()
                 .withIcon(FontAwesome.Icon.faw_euro_sign)
@@ -37,19 +39,24 @@ public class NavigationDrawerHelper {
         logout = new SecondaryDrawerItem()
                 .withIcon(FontAwesome.Icon.faw_sign_out_alt)
                 .withName(R.string.drawer_item_logout)
-                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
-                    @Override
-                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                        LoginController.logOut(activity);
-                        Intent intent = new Intent(activity, LoginActivity.class);
-                        activity.startActivity(intent);
-                        activity.finish();
-                        return true;
-                    }
+                .withOnDrawerItemClickListener((view, position, drawerItem) -> {
+                    AuthHelper.signOut(activity);
+                    Intent intent = new Intent(activity, LoginActivity.class);
+                    activity.startActivity(intent);
+                    activity.finish();
+                    return true;
                 });
+        profileDrawerItem = new ProfileDrawerItem()
+                .withName(AuthHelper.getAccount().getDisplayName())
+                .withEmail(AuthHelper.getAccount().getEmail());
+    }
 
-        //create the drawer and remember the `Drawer` result object
-        Drawer drawer = new DrawerBuilder()
+    public static void initAccount(GoogleSignInAccount account) {
+        //profileDrawerItem.withName(account.getDisplayName()).withEmail(account.getEmail());
+    }
+
+    public static void draw(Activity activity, Toolbar toolbar) {
+        new DrawerBuilder()
                 .withActivity(activity)
                 .withToolbar(toolbar)
                 .withAccountHeader(configuteAccountHeader(activity))
@@ -61,18 +68,13 @@ public class NavigationDrawerHelper {
                 .build();
     }
 
-    private static AccountHeader configuteAccountHeader(Activity activity){
-
+    private static AccountHeader configuteAccountHeader(Activity activity) {
         return new AccountHeaderBuilder()
                 .withActivity(activity)
                 .withHeaderBackground(R.drawable.header)
                 .withProfileImagesClickable(false)
                 .withSelectionListEnabled(false)
-                .addProfiles(
-                        new ProfileDrawerItem().withName("Mike Penz").withEmail("mikepenz@gmail.com")
-                                .withIcon(headerDrawable)
-                                //.withIcon(Uri.parse("https://pp.userapi.com/c831508/v831508482/251cb/fY9HxFYErg4.jpg"))
-                )
+                .addProfiles(profileDrawerItem)
                 .build();
     }
 }

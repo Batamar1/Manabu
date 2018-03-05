@@ -1,8 +1,8 @@
 package me.manabu.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -13,87 +13,84 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
 import me.manabu.R;
-import me.manabu.controllers.LoginController;
+import me.manabu.helpers.AuthHelper;
+import me.manabu.helpers.NavigationDrawerHelper;
 
-public class LoginActivity extends AppCompatActivity {
+import static me.manabu.helpers.AuthHelper.RC_SIGN_IN;
 
-    GoogleSignInClient mGoogleSignInClient;
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private Button signInButton;
+
+    private boolean doubleBackToExitPressedOnce = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //Button facebookButton = (Button)findViewById(R.id.button_login_facebook);
-        //Button googleButton = (Button)findViewById(R.id.button_login_google);
-
-        //Временно пока логина нет.
-        View.OnClickListener listener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), MainActivity.class);
-                LoginController.logIn((Activity) v.getContext());
-                startActivity(intent);
-                finish();
-            }
-        };
-
-        //facebookButton.setOnClickListener(listener);
-        //googleButton.setOnClickListener(listener);
-
-        SignInButton signInButton = (SignInButton) findViewById(R.id.button_login_google);
-        signInButton.setSize(SignInButton.SIZE_STANDARD);
-
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
-
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-
-
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-
-        findViewById(R.id.button_login_google).setOnClickListener((view) -> signIn());
-
+        signInButton = (Button) findViewById(R.id.login_button_google);
+        signInButton.setOnClickListener(this);
 
     }
 
-    private void signIn() {
-        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent, 123);
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.login_button_google:
+                Intent signInIntent = AuthHelper.getClientForActivity(this).getSignInIntent();
+                startActivityForResult(signInIntent, RC_SIGN_IN);
+                break;
+        }
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
-        if (requestCode == 123) {
-            // The Task returned from this call is always completed, no need to attach
-            // a listener.
-            //Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+        if(resultCode != RESULT_OK){
+            Log.d("LoginActivity", "onActivityResult: failed");
+            return;
+        }
 
-            GoogleSignInAccount account = Auth.
-            //handleSignInResult(task);
+        switch (requestCode){
+            case RC_SIGN_IN:
+                Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+                handleSignInResult(task);
+                break;
         }
     }
 
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-
-            // Signed in successfully, show authenticated UI.
-            Toast.makeText(this, "Kaef" + account.getDisplayName(), Toast.LENGTH_LONG);
+            AuthHelper.signIn(this, account);
+            Toast.makeText(this, account.getIdToken(), Toast.LENGTH_LONG).show();
+            finish();
         } catch (ApiException e) {
-            // The ApiException status code indicates the detailed failure reason.
-            // Please refer to the GoogleSignInStatusCodes class reference for more information.
-            Log.w("GoogleSignUp", "signInResult:failed code=" + e.getStatusCode());
+            Toast.makeText(this,
+                    getString(R.string.login_google_sign_in_error) + ", #" + e.getStatusCode(),
+                    Toast.LENGTH_LONG).show();
+            Log.d("LoginActivity", "Sign in failed: " + e.getStatusCode());
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        if (doubleBackToExitPressedOnce) {
+            finish();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, getResources().getString(R.string.main_double_exit), Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 3000);
+    }
 }

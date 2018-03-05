@@ -1,3 +1,7 @@
 <resources>
-    <dimen name="fab_margin">16dp</dimen>
+    <!-- Navigation Drawer -->
+    <dimen name="navigation_drawer_width">300dp</dimen>
+
+    <!-- Lesson Activity Dimens -->
+    <dimen name="lesson_item_height">64dp</dimen>
 </resources>
