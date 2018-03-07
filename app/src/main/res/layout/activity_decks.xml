@@ -6,4 +6,21 @@
     android:layout_height="match_parent"
     tools:context="me.manabu.activities.DecksActivity">
 
+    <include
+        android:id="@+id/decks_toolbar_include"
+        layout="@layout/toolbar_actionbar" />
+
+    <ListView
+        android:id="@+id/decks_listview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/decks_toolbar_include" />
+
 </android.support.constraint.ConstraintLayout>

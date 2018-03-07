@@ -47,9 +47,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(resultCode != RESULT_OK) {
-            Log.d("LoginActivity", "onActivityResult: failed");
-            return;
+        switch (resultCode){
+            case RESULT_OK:
+                break;
+            case RESULT_CANCELED:
+                return;
+
+            default:
+                Log.d("LoginActivity", "onActivityResult: result code check failed.");
+                return;
         }
 
         switch (requestCode) {
@@ -69,7 +75,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             finish();
         } catch (ApiException e) {
             Toast.makeText(this,
-                    getString(R.string.login_google_sign_in_error) + ", #" + e.getStatusCode(),
+                    getString(R.string.login_error_google_sign_in) + ", #" + e.getStatusCode(),
                     Toast.LENGTH_LONG).show();
             Log.d("LoginActivity", "handleSignInResult failed: " + e.getStatusCode());
         }

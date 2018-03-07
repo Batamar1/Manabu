@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Manabu</string>
     <string name="main_double_exit">Нажмите ещё раз для закрытия приложения</string>
     <string name="drawer_item_logout">Выйти</string>
-    <string name="google_login_button_text">Войти через Google</string>
-    <string name="facebook_login_button_text">Войти через Facebook</string>
     <string name="menu_item">Элемент меню</string>
     <string name="login_text_auth">Sign in to start learning :)</string>
+    <string name="login_button_google">Войти через Google</string>
+    <string name="drawer_item_home">Главная</string>
+    <string name="drawer_item_decks">Колоды</string>
+    <string name="login_sign_out_failed">Неизвестная ошибка при выходе</string>
+    <string name="lesson_text_next">Далее</string>
+    <string name="login_error_google_sign_in">Не могу войти</string>
+    <string name="decks_deck_text_cards">Карточек</string>
 </resources>

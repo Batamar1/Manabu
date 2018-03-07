@@ -1,31 +1,33 @@
 <resources>
-    <string name="app_name">Manabu</string>
+    <string name="app_name" translatable="false">Manabu</string>
+
+    <!-- Navigation Drawer -->
+    <string name="drawer_item_home">Home</string>
+    <string name="drawer_item_decks">Decks</string>
+    <string name="drawer_item_logout">Logout</string>
 
     <!-- Main Activity -->
     <string name="main_double_exit">Click one more time for app to close.</string>
 
     <!-- Login Activity -->
-    <string name="login_title_activity">Login</string>
-    <string name="login_google_button">Sign in through Google</string>
-    <string name="login_google_sign_in_error">Sign in failed</string>
+    <string name="login_title_activity" translatable="false">LoginActivity</string>
+    <string name="login_text_auth">Sign in to start learning :)</string>
+    <string name="login_button_google">Sign in through Google</string>
+    <string name="login_error_google_sign_in">Sign in failed</string>
     <string name="login_sign_out_failed">Can\'t sign out for some reason</string>
 
-    <string name="drawer_item_home">Home</string>
-    <string name="drawer_item_free_play">Free Play</string>
-    <string name="drawer_item_custom">Custom</string>
-    <string name="drawer_item_settings">Settings</string>
-    <string name="drawer_item_help">Help</string>
-    <string name="drawer_item_open_source">Open Source</string>
-    <string name="drawer_item_logout">Logout</string>
-    <string name="asdasd">Напишу какой-нибудь большой текст для теста этого блока. Напишу какой-нибудь большой текст для теста этого блока. Напишу какой-нибудь большой текст для теста этого блока. Напишу какой-нибудь большой текст для теста этого блока.</string>
-    <string name="title_activity_repeat_card">RepeatCardActivity</string>
+    <!-- Lesson Activity -->
+    <string name="lesson_text_next">Next item</string>
+
+    <!-- Decks Activity -->
+    <string name="decks_deck_text_cards">Cards</string>
+
+
+    <string name="title_activity_repeat_card" translatable="false">RepeatCardActivity</string>
     <string name="menu_item">menu_item</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="activity_lesson_next">Next item</string>
-    <string name="login_text_auth">Sign in to start learning :)</string>
     
-    <string name="server_client_id">238671417209-3aoe6ge4h8ke9ot5seturcosqtgg11ss.apps.googleusercontent.com</string>
-    <string name="drawer_item_decks">Decks</string>
+    <string name="server_client_id" translatable="false">238671417209-3aoe6ge4h8ke9ot5seturcosqtgg11ss.apps.googleusercontent.com</string>
+
 </resources>

@@ -37,8 +37,6 @@ public class LessonCardActivity extends AppCompatActivity {
         itemName = (TextView) findViewById(R.id.lesson_item_name);
         listViewInfo = (ListView) findViewById(R.id.lesson_listview_info);
 
-        //descriptionText = (TextView) findViewById(R.id.descriptionText);
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.lesson_toolbar_include);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

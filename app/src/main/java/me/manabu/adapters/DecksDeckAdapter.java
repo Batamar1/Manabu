@@ -1,9 +1,7 @@
 package me.manabu.adapters;
 
-
 import android.app.Activity;
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,15 +11,16 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import me.manabu.R;
+import me.manabu.adapters.models.DecksDeckModel;
 import me.manabu.adapters.models.LessonItemModel;
 
-public class LessonItemAdapter extends ArrayAdapter<LessonItemModel> {
+public class DecksDeckAdapter extends ArrayAdapter<DecksDeckModel> {
 
     private Context context;
-    private ArrayList<LessonItemModel> data;
+    private ArrayList<DecksDeckModel> data;
 
-    public LessonItemAdapter(Context context, ArrayList<LessonItemModel> data){
-        super(context, R.layout.item_lesson_text, data);
+    public DecksDeckAdapter(Context context, ArrayList<DecksDeckModel> data){
+        super(context, R.layout.item_decks_deck, data);
         this.context = context;
         this.data = data;
     }
@@ -35,17 +34,20 @@ public class LessonItemAdapter extends ArrayAdapter<LessonItemModel> {
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
         infoItem = inflater.inflate(R.layout.item_lesson_text, null);
 
-        holder.header = (TextView) infoItem.findViewById(R.id.item_lesson_header);
-        holder.text = (TextView) infoItem.findViewById(R.id.item_lesson_text);
+        holder.title = (TextView) infoItem.findViewById(R.id.item_decks_deck_title);
+        holder.desc = (TextView) infoItem.findViewById(R.id.item_decks_deck_description);
+        holder.cards = (TextView) infoItem.findViewById(R.id.item_decks_deck_cards_count);
 
-        holder.header.setText(data.get(position).getHeader());
-        holder.text.setText(data.get(position).getText());
+        holder.title.setText(data.get(position).getTitle());
+        holder.desc.setText(data.get(position).getDescription());
+        holder.cards.setText(data.get(position).getCards());
 
         return infoItem;
     }
 
     private class ItemHolder{
-        TextView header;
-        TextView text;
+        TextView title;
+        TextView desc;
+        TextView cards;
     }
 }
