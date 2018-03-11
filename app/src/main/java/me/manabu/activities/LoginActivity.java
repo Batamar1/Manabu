@@ -15,7 +15,7 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
 import me.manabu.R;
-import me.manabu.helpers.AuthHelper;
+import me.manabu.utils.AuthUtils;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.login_button_google:
-                Intent signInIntent = AuthHelper.getClientForActivity(this).getSignInIntent();
+                Intent signInIntent = AuthUtils.getClientForActivity(this).getSignInIntent();
                 startActivityForResult(signInIntent, RC_LOGIN_GOOGLE);
                 break;
         }
@@ -69,7 +69,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-            AuthHelper.signIn(account);
+            AuthUtils.signIn(account);
             Log.d("LoginActivity", "handleSignInResult done.");
             setResult(RESULT_OK);
             finish();

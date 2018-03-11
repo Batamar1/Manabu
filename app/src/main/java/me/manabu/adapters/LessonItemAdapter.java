@@ -1,6 +1,7 @@
 package me.manabu.adapters;
 
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -26,8 +27,9 @@ public class LessonItemAdapter extends ArrayAdapter<LessonItemModel> {
         this.data = data;
     }
 
+    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent){
+    public View getView(int position, View convertView, @NonNull ViewGroup parent){
 
         ItemHolder holder = new ItemHolder();
         View infoItem = convertView;

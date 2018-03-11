@@ -5,19 +5,17 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.widget.Adapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 import me.manabu.R;
 import me.manabu.adapters.LessonItemAdapter;
 import me.manabu.adapters.models.LessonItemModel;
-import me.manabu.api.models.DeckModel;
-import me.manabu.helpers.RetrofitHelper;
+import me.manabu.webapi.models.DeckModel;
+import me.manabu.utils.RetrofitUtils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -49,7 +47,7 @@ public class LessonCardActivity extends AppCompatActivity {
     }
 
     private void loadData(){
-        RetrofitHelper.retrofit.getLessonsFromDeck(DECK_ID).enqueue(new Callback<List<DeckModel>>() {
+        RetrofitUtils.retrofit.getLessonsFromDeck(DECK_ID).enqueue(new Callback<List<DeckModel>>() {
             @Override
             public void onResponse(Call<List<DeckModel>> call, Response<List<DeckModel>> response) {
                 if(response.isSuccessful()){

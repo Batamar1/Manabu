@@ -1,46 +1,46 @@
 package me.manabu.activities;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
-import android.widget.TextView;
+
+import com.mikepenz.fontawesome_typeface_library.FontAwesome;
+import com.mikepenz.iconics.IconicsDrawable;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import me.manabu.R;
 import me.manabu.adapters.DecksDeckAdapter;
-import me.manabu.adapters.LessonItemAdapter;
 import me.manabu.adapters.models.DecksDeckModel;
-import me.manabu.adapters.models.LessonItemModel;
-import me.manabu.api.models.DeckModel;
-import me.manabu.helpers.NavigationDrawerHelper;
-import me.manabu.helpers.RetrofitHelper;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import me.manabu.utils.NavigationDrawer;
 
 public class DecksActivity extends AppCompatActivity {
 
     private ListView decksList;
+    private Toolbar toolbar;
+
+    private NavigationDrawer drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lesson_card);
+        setContentView(R.layout.activity_decks);
 
 
-        decksList = (ListView) findViewById(R.id.decks_listview);
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.decks_toolbar_include);
+        toolbar = (Toolbar) findViewById(R.id.decks_toolbar_include);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        NavigationDrawerHelper.getDrawer(this, toolbar);
+        drawer = new NavigationDrawer(this, toolbar);
+        drawer.getDrawer();
 
         ArrayList<DecksDeckModel> infoList = new ArrayList<>();
 
@@ -49,11 +49,42 @@ public class DecksActivity extends AppCompatActivity {
         infoList.add(new DecksDeckModel("10000 слов английского", "Языки - Английский", 10000));
         infoList.add(new DecksDeckModel("Как запикапить тян", "Жизнь", 57));
 
+        decksList = (ListView) findViewById(R.id.decks_listview);
         DecksDeckAdapter adapter = new DecksDeckAdapter(this, infoList);
         decksList.setAdapter(adapter);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.decks_fab_create);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
 
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_decks, menu);
+
+        menu.add(R.string.app_name).setIcon(new IconicsDrawable(this).icon(FontAwesome.Icon.faw_plus).sizeDp(16)).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case MENU_ITEM_ITEM1:
+//                clearArray();
+//                return true;
+//
+//            default:
+//                return false;
+//        }
+        return false;
+    }
 
     @Override
     public boolean onSupportNavigateUp() {

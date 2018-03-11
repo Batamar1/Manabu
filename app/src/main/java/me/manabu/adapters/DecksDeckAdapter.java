@@ -32,7 +32,7 @@ public class DecksDeckAdapter extends ArrayAdapter<DecksDeckModel> {
         View infoItem = convertView;
 
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-        infoItem = inflater.inflate(R.layout.item_lesson_text, null);
+        infoItem = inflater.inflate(R.layout.item_decks_deck, null);
 
         holder.title = (TextView) infoItem.findViewById(R.id.item_decks_deck_title);
         holder.desc = (TextView) infoItem.findViewById(R.id.item_decks_deck_description);
@@ -40,7 +40,7 @@ public class DecksDeckAdapter extends ArrayAdapter<DecksDeckModel> {
 
         holder.title.setText(data.get(position).getTitle());
         holder.desc.setText(data.get(position).getDescription());
-        holder.cards.setText(data.get(position).getCards());
+        holder.cards.setText(String.valueOf(data.get(position).getCards()));
 
         return infoItem;
     }

@@ -15,8 +15,8 @@ import android.widget.Toast;
 import com.mikepenz.materialdrawer.Drawer;
 
 import me.manabu.R;
-import me.manabu.helpers.AuthHelper;
-import me.manabu.helpers.NavigationDrawerHelper;
+import me.manabu.utils.AuthUtils;
+import me.manabu.utils.NavigationDrawer;
 
 import static me.manabu.activities.LoginActivity.RC_ACTIVITY_LOGIN;
 
@@ -36,10 +36,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         toolbar = (Toolbar) findViewById(R.id.main_toolbar_include);
         setSupportActionBar(toolbar);
 
-        AuthHelper.init(this);
+        AuthUtils.init(this);
 
         //Not logged? -> LoginActivity
-        if (!AuthHelper.isSignedIn(this)) {
+        if (!AuthUtils.isSignedIn(this)) {
             redirectIfNotSignedIn();
         } else {
             initDrawer();
@@ -52,6 +52,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         repeatsButton.setText("Повторения");
 
         lessonsButton.setOnClickListener(this);
+    }
+
+    private void initDrawer(){
+        drawer = new NavigationDrawer(this, toolbar).getDrawer();
+    }
+
+    private void redirectIfNotSignedIn() {
+        Intent i = new Intent(this, LoginActivity.class);
+        startActivityForResult(i, RC_ACTIVITY_LOGIN);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == RC_ACTIVITY_LOGIN && resultCode == RESULT_OK) {
+            initDrawer();
+        } else {
+            Log.d("MainActivity", "onActivityResult failed.");
+        }
     }
 
     @Override
@@ -83,31 +101,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 3000);
     }
 
-    private void redirectIfNotSignedIn() {
-        Intent i = new Intent(this, LoginActivity.class);
-        startActivityForResult(i, RC_ACTIVITY_LOGIN);
-
-        Log.d("MainActivity", "redirectIfNotSignedIn.");
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == RC_ACTIVITY_LOGIN && resultCode == RESULT_OK) {
-            initDrawer();
-            Log.d("MainActivity", "onActivityResult ok.");
-        } else {
-            Log.d("MainActivity", "onActivityResult failed.");
-        }
-    }
-
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
         return true;
-    }
-
-    private void initDrawer(){
-        NavigationDrawerHelper.init(this);
-        drawer = NavigationDrawerHelper.getDrawer(this, toolbar);
     }
 }

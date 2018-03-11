@@ -1,8 +1,8 @@
-package me.manabu.api;
+package me.manabu.webapi;
 
 import java.util.List;
 
-import me.manabu.api.models.DeckModel;
+import me.manabu.webapi.models.DeckModel;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;

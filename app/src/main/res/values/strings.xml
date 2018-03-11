@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name" translatable="false">Manabu</string>
+    <string name="server_client_id" translatable="false">238671417209-3aoe6ge4h8ke9ot5seturcosqtgg11ss.apps.googleusercontent.com</string>
 
     <!-- Navigation Drawer -->
     <string name="drawer_item_home">Home</string>
@@ -22,12 +23,12 @@
     <!-- Decks Activity -->
     <string name="decks_deck_text_cards">Cards</string>
 
-
+    <!-- Repeat Activity -->
     <string name="title_activity_repeat_card" translatable="false">RepeatCardActivity</string>
-    <string name="menu_item">menu_item</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    
-    <string name="server_client_id" translatable="false">238671417209-3aoe6ge4h8ke9ot5seturcosqtgg11ss.apps.googleusercontent.com</string>
+    <!-- Menu's -->
+    <string name="menu_item">menu_item</string>
+    <string name="menu_decks_add">Create</string>
+    <string name="decks_title_activity">Decks</string>
 
 </resources>

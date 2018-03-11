@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,10 +29,12 @@
         <activity
             android:name=".activities.RepeatCardActivity"
             android:label="@string/title_activity_repeat_card" />
-        <activity android:name=".activities.DecksActivity" />
+        <activity
+            android:name=".activities.DecksActivity"
+            android:label="@string/decks_title_activity" />
         <activity android:name=".activities.CreateDeckActivity" />
         <activity android:name=".activities.EditDeckActivity" />
-        <activity android:name=".activities.EditDeckItemActivity"></activity>
+        <activity android:name=".activities.EditDeckItemActivity" />
     </application>
 
 </manifest>

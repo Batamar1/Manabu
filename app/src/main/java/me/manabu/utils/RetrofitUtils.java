@@ -1,10 +1,10 @@
-package me.manabu.helpers;
+package me.manabu.utils;
 
-import me.manabu.api.ApiInterface;
+import me.manabu.webapi.ApiInterface;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class RetrofitHelper {
+public class RetrofitUtils {
 
     private static final String BASE_URL = "https://manabugora.herokuapp.com";
     private static final String BASE_URL_SLASH = BASE_URL + "/";
