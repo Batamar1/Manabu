@@ -3,7 +3,6 @@ package me.manabu.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -12,19 +11,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.mikepenz.materialdrawer.Drawer;
-
 import me.manabu.R;
+import me.manabu.activities.parents.BasicNavigationDrawerActivity;
 import me.manabu.utils.AuthUtils;
-import me.manabu.utils.NavigationDrawer;
 
 import static me.manabu.activities.LoginActivity.RC_ACTIVITY_LOGIN;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends BasicNavigationDrawerActivity implements View.OnClickListener {
 
     private Button repeatsButton, lessonsButton;
-    private Toolbar toolbar;
-    private Drawer drawer;
 
     private boolean doubleBackToExitPressedOnce = false;
 
@@ -33,8 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        toolbar = (Toolbar) findViewById(R.id.main_toolbar_include);
-        setSupportActionBar(toolbar);
+        setToolbar(R.id.main_toolbar_include);
 
         AuthUtils.init(this);
 
@@ -52,10 +46,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         repeatsButton.setText("Повторения");
 
         lessonsButton.setOnClickListener(this);
-    }
-
-    private void initDrawer(){
-        drawer = new NavigationDrawer(this, toolbar).getDrawer();
     }
 
     private void redirectIfNotSignedIn() {
@@ -85,8 +75,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onBackPressed() {
-        if(drawer.isDrawerOpen()){
-            drawer.closeDrawer();
+        if(getDrawer().isDrawerOpen()){
+            getDrawer().closeDrawer();
             return;
         }
 

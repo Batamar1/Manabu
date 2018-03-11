@@ -24,18 +24,17 @@ import com.mikepenz.materialdrawer.util.DrawerImageLoader;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
-import java.util.concurrent.locks.ReentrantLock;
-
 import jp.wasabeef.fresco.processors.internal.FastBlur;
 import me.manabu.R;
 import me.manabu.activities.DecksActivity;
+import me.manabu.activities.MainActivity;
 
 public class NavigationDrawer {
 
     private Activity activity;
     private Toolbar toolbar;
 
-    private DrawerBuilder drawerBuilder;
+    private Drawer drawer;
 
     private AccountHeader accountHeader;
     private Drawable headerDrawable;
@@ -47,17 +46,17 @@ public class NavigationDrawer {
     private ProfileDrawerItem profileDrawerItem;
     private static final DividerDrawerItem divider = new DividerDrawerItem();
 
+    private static final int PROFILE_ID = 0;
+
     public NavigationDrawer(Activity activity, Toolbar toolbar) {
         this.activity = activity;
         this.toolbar = toolbar;
 
-        //TODO: Сделать отслежку при клике.
-
-        initItems();
         initImageLoader();
-        loadHeadDrawable(activity);
+        initItems();
+        loadUserPictures(activity);
 
-        drawerBuilder = new DrawerBuilder()
+        drawer = new DrawerBuilder()
                 .withActivity(activity)
                 .withToolbar(toolbar)
                 .withAccountHeader(accountHeader)
@@ -65,15 +64,17 @@ public class NavigationDrawer {
                         main_page,
                         decks
                 )
-                .withStickyFooterShadow(true)
-                .withFooterDivider(true)
+                .withStickyFooterShadow(false)
+                .withStickyFooterDivider(true)
                 .addStickyDrawerItems(
                         logout
-                );
+                ).build();
+
+        setNowItem(); //TODO: FIX!!!
     }
 
     public Drawer getDrawer() {
-        return drawerBuilder.build();
+        return drawer;
     }
 
     private void initImageLoader() {
@@ -81,8 +82,6 @@ public class NavigationDrawer {
             @Override
             public void set(ImageView imageView, Uri uri, Drawable placeholder, String tag) {
                 Picasso.with(imageView.getContext()).load(uri).placeholder(placeholder).into(imageView);
-                Log.d("TAG", "i loaded");
-                Log.d("TAG", uri.toString());
             }
 
             @Override
@@ -97,7 +96,12 @@ public class NavigationDrawer {
 
         main_page = new PrimaryDrawerItem()
                 .withIcon(FontAwesome.Icon.faw_home)
-                .withName(R.string.drawer_item_home);
+                .withName(R.string.drawer_item_home)
+                .withOnDrawerItemClickListener((view, position, drawerItem) -> {
+                    Intent intent = new Intent(activity, MainActivity.class);
+                    activity.startActivity(intent);
+                    return true;
+                });
 
         decks = new PrimaryDrawerItem()
                 .withIcon(FontAwesome.Icon.faw_list_alt)
@@ -126,17 +130,17 @@ public class NavigationDrawer {
                 .withHeaderBackground(headerDrawable)
                 .withProfileImagesClickable(false)
                 .withSelectionListEnabled(false)
+                .addProfiles(profileDrawerItem)
                 .build();
     }
 
-    private void loadHeadDrawable(Activity activity) {
+    private void loadUserPictures(Activity activity) {
         Picasso.with(activity).load(AuthUtils.getAccount().getPhotoUrl()).into(new Target() {
             @Override
             public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
                 //Once we get image - update header and variable
                 headerDrawable = new BitmapDrawable(activity.getResources(), FastBlur.blur(bitmap, BLUR, false));
                 accountHeader.setBackground(headerDrawable);
-                accountHeader.addProfile(profileDrawerItem, 0);
             }
 
             @Override
@@ -148,5 +152,19 @@ public class NavigationDrawer {
             public void onPrepareLoad(Drawable placeHolderDrawable) {
             }
         });
+    }
+
+    private void setNowItem() {
+        if (activity.getClass() == MainActivity.class) {
+            setSelection(main_page);
+        }
+        if (activity.getClass() == DecksActivity.class) {
+            setSelection(decks);
+        }
+    }
+
+    private void setSelection(PrimaryDrawerItem iDrawerItem){
+        iDrawerItem.withSetSelected(false).withEnabled(false);
+        drawer.setSelection(iDrawerItem, false);
     }
 }

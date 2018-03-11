@@ -17,30 +17,25 @@ import com.mikepenz.iconics.IconicsDrawable;
 import java.util.ArrayList;
 
 import me.manabu.R;
+import me.manabu.activities.parents.BasicNavigationDrawerActivity;
 import me.manabu.adapters.DecksDeckAdapter;
 import me.manabu.adapters.models.DecksDeckModel;
 import me.manabu.utils.NavigationDrawer;
 
-public class DecksActivity extends AppCompatActivity {
+public class DecksActivity extends BasicNavigationDrawerActivity {
 
     private ListView decksList;
-    private Toolbar toolbar;
-
-    private NavigationDrawer drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_decks);
+        setToolbar(R.id.decks_toolbar_include);
 
-
-        toolbar = (Toolbar) findViewById(R.id.decks_toolbar_include);
-        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        drawer = new NavigationDrawer(this, toolbar);
-        drawer.getDrawer();
+        initDrawer();
 
         ArrayList<DecksDeckModel> infoList = new ArrayList<>();
 
