@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
@@ -19,6 +20,7 @@ import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.util.AbstractDrawerImageLoader;
 import com.mikepenz.materialdrawer.util.DrawerImageLoader;
 import com.squareup.picasso.Picasso;
@@ -28,6 +30,7 @@ import jp.wasabeef.fresco.processors.internal.FastBlur;
 import me.manabu.R;
 import me.manabu.activities.DecksActivity;
 import me.manabu.activities.MainActivity;
+import me.manabu.activities.SettingsActivity;
 
 public class NavigationDrawer {
 
@@ -42,11 +45,10 @@ public class NavigationDrawer {
 
     private PrimaryDrawerItem main_page;
     private PrimaryDrawerItem decks;
+    private PrimaryDrawerItem settings;
     private PrimaryDrawerItem logout;
     private ProfileDrawerItem profileDrawerItem;
     private static final DividerDrawerItem divider = new DividerDrawerItem();
-
-    private static final int PROFILE_ID = 0;
 
     public NavigationDrawer(Activity activity, Toolbar toolbar) {
         this.activity = activity;
@@ -55,7 +57,11 @@ public class NavigationDrawer {
         initImageLoader();
         initItems();
         loadUserPictures(activity);
+        initAndBuildDrawer();
+        setNowItem();
+    }
 
+    private void initAndBuildDrawer() {
         drawer = new DrawerBuilder()
                 .withActivity(activity)
                 .withToolbar(toolbar)
@@ -64,17 +70,14 @@ public class NavigationDrawer {
                         main_page,
                         decks
                 )
+                .withCloseOnClick(true)
+                .withHeaderPadding(true)
                 .withStickyFooterShadow(false)
                 .withStickyFooterDivider(true)
                 .addStickyDrawerItems(
+                        settings,
                         logout
                 ).build();
-
-        setNowItem(); //TODO: FIX!!!
-    }
-
-    public Drawer getDrawer() {
-        return drawer;
     }
 
     private void initImageLoader() {
@@ -97,20 +100,17 @@ public class NavigationDrawer {
         main_page = new PrimaryDrawerItem()
                 .withIcon(FontAwesome.Icon.faw_home)
                 .withName(R.string.drawer_item_home)
-                .withOnDrawerItemClickListener((view, position, drawerItem) -> {
-                    Intent intent = new Intent(activity, MainActivity.class);
-                    activity.startActivity(intent);
-                    return true;
-                });
+                .withOnDrawerItemClickListener(getClassClicker(MainActivity.class));
 
         decks = new PrimaryDrawerItem()
                 .withIcon(FontAwesome.Icon.faw_list_alt)
                 .withName(R.string.drawer_item_decks)
-                .withOnDrawerItemClickListener((view, position, drawerItem) -> {
-                    Intent intent = new Intent(activity, DecksActivity.class);
-                    activity.startActivity(intent);
-                    return true;
-                });
+                .withOnDrawerItemClickListener(getClassClicker(DecksActivity.class));
+
+        settings = new PrimaryDrawerItem()
+                .withIcon(FontAwesome.Icon.faw_cog)
+                .withName(R.string.drawer_item_settings);
+                //.withOnDrawerItemClickListener(getClassClicker(SettingsActivity.class));
 
         logout = new PrimaryDrawerItem()
                 .withIcon(FontAwesome.Icon.faw_sign_out_alt)
@@ -156,15 +156,33 @@ public class NavigationDrawer {
 
     private void setNowItem() {
         if (activity.getClass() == MainActivity.class) {
-            setSelection(main_page);
+            setCurrentItem(main_page);
         }
         if (activity.getClass() == DecksActivity.class) {
-            setSelection(decks);
+            setCurrentItem(decks);
         }
     }
 
-    private void setSelection(PrimaryDrawerItem iDrawerItem){
-        iDrawerItem.withSetSelected(false).withEnabled(false);
+    private void setCurrentItem(PrimaryDrawerItem iDrawerItem) {
+        iDrawerItem.withSetSelected(false)
+                .withOnDrawerItemClickListener(null);
         drawer.setSelection(iDrawerItem, false);
+    }
+
+    private Drawer.OnDrawerItemClickListener getClassClicker(Class className) {
+        return (view, position, drawerItem) -> {
+            Intent intent = new Intent(activity, className);
+            activity.startActivity(intent);
+            return true;
+
+        };
+    }
+
+    public Drawer getDrawer() {
+        return drawer;
+    }
+
+    public Toolbar getToolbar() {
+        return toolbar;
     }
 }

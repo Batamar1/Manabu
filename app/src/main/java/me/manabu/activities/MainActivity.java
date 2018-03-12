@@ -80,15 +80,19 @@ public class MainActivity extends BasicNavigationDrawerActivity implements View.
             return;
         }
 
-        if (doubleBackToExitPressedOnce) {
+        if(isTaskRoot()){
+            if (doubleBackToExitPressedOnce) {
+                super.onBackPressed();
+                return;
+            }
+
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, getResources().getString(R.string.main_double_exit), Toast.LENGTH_SHORT).show();
+
+            new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 3000);
+        } else {
             super.onBackPressed();
-            return;
         }
-
-        this.doubleBackToExitPressedOnce = true;
-        Toast.makeText(this, getResources().getString(R.string.main_double_exit), Toast.LENGTH_SHORT).show();
-
-        new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 3000);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

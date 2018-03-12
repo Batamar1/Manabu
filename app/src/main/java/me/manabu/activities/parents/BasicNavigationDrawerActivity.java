@@ -1,6 +1,5 @@
 package me.manabu.activities.parents;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
@@ -10,7 +9,6 @@ import com.mikepenz.materialdrawer.Drawer;
 
 import me.manabu.utils.NavigationDrawer;
 
-@SuppressLint("Registered")
 public class BasicNavigationDrawerActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
@@ -25,16 +23,16 @@ public class BasicNavigationDrawerActivity extends AppCompatActivity {
         drawer = new NavigationDrawer(this, toolbar).getDrawer();
     }
 
+    protected void setToolbar(@IdRes int toolbarId) {
+        toolbar = (Toolbar) findViewById(toolbarId);
+        setSupportActionBar(toolbar);
+    }
+
     public Drawer getDrawer() {
         return drawer;
     }
 
     public Toolbar getToolbar() {
         return toolbar;
-    }
-
-    protected void setToolbar(@IdRes int toolbarId) {
-        toolbar = (Toolbar) findViewById(toolbarId);
-        setSupportActionBar(toolbar);
     }
 }
