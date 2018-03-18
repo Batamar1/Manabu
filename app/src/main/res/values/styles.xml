@@ -24,8 +24,8 @@
     <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="ActionBarStyle" parent="AppTheme">
-        <item name="android:textColorPrimary">@color/action_bar_text</item>
-        <item name="android:textColorSecondary">@color/action_bar_text</item>
+        <item name="android:textColorPrimary">@color/primary_background_text</item>
+        <item name="android:textColorSecondary">@color/primary_background_text</item>
         <item name="android:actionMenuTextColor">@color/primary_text</item>
         <item name="android:textColor">@color/primary_text</item>
     </style>

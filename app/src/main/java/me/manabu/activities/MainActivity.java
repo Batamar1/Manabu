@@ -3,7 +3,6 @@ package me.manabu.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -46,11 +45,13 @@ public class MainActivity extends BasicNavigationDrawerActivity implements View.
         repeatsButton.setText("Повторения");
 
         lessonsButton.setOnClickListener(this);
+        repeatsButton.setOnClickListener(this);
     }
 
     private void redirectIfNotSignedIn() {
         Intent i = new Intent(this, LoginActivity.class);
         startActivityForResult(i, RC_ACTIVITY_LOGIN);
+
     }
 
     @Override
@@ -66,21 +67,25 @@ public class MainActivity extends BasicNavigationDrawerActivity implements View.
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.main_button_lessons:
-                Intent intent = new Intent(v.getContext(), LessonCardActivity.class);
-                intent.putExtra("deckId", 2);
-                startActivity(intent);
+                Intent lessonsIntent = new Intent(v.getContext(), LessonCardActivity.class);
+                lessonsIntent.putExtra("deckId", 2);
+                startActivity(lessonsIntent);
+                break;
+            case R.id.main_button_repeats:
+                Intent repeatsIntent = new Intent(v.getContext(), RepeatTypeableActivity.class);
+                startActivity(repeatsIntent);
                 break;
         }
     }
 
     @Override
     public void onBackPressed() {
-        if(getDrawer().isDrawerOpen()){
+        if (getDrawer().isDrawerOpen()) {
             getDrawer().closeDrawer();
             return;
         }
 
-        if(isTaskRoot()){
+        if (isTaskRoot()) {
             if (doubleBackToExitPressedOnce) {
                 super.onBackPressed();
                 return;

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    tools:context="me.manabu.activities.RepeatTypeableActivity">
+
+    <include
+        android:id="@+id/repeat_typeable_toolbar_include"
+        layout="@layout/toolbar_actionbar" />
+
+    <TextView
+        android:id="@+id/_rttextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@color/primary"
+        android:gravity="center"
+        android:padding="@dimen/repeat_typeable_text_padding"
+        android:text="Что такое ООП. ООП — это и ОО программирование и проектирование. Одно без другого бессмысленно чуть более чем полностью. Создано ООП для проектирования/программирования программных продуктов. Не для моделирования процессов."
+        android:textColor="@color/primary_background_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/repeat_typeable_toolbar_include" />
+
+    <ImageButton
+        android:id="@+id/_rtb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:background="?android:selectableItemBackground"
+        android:elevation="10dp"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/_reeditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/_reeditText"
+        app:srcCompat="@drawable/ic_keyboard_arrow_right_black_48px" />
+
+    <EditText
+        android:id="@+id/_reeditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/edittext_review_bg"
+        android:ellipsize="start"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="text"
+        android:padding="8dp"
+        android:paddingEnd="48dp"
+        android:singleLine="true"
+        android:text="gggggggggggggggggggggggrrrrr123"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/_rttextView" />
+
+
+</android.support.constraint.ConstraintLayout>
