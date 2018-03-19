@@ -8,11 +8,11 @@
     tools:context="me.manabu.activities.RepeatTypeableActivity">
 
     <include
-        android:id="@+id/repeat_typeable_toolbar_include"
+        android:id="@+id/repeatTypeableToolbarInclude"
         layout="@layout/toolbar_actionbar" />
 
     <TextView
-        android:id="@+id/_rttextView"
+        android:id="@+id/repeatTypeableDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -23,23 +23,23 @@
         android:textColor="@color/primary_background_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/repeat_typeable_toolbar_include" />
+        app:layout_constraintTop_toBottomOf="@+id/repeatTypeableToolbarInclude" />
 
     <ImageButton
-        android:id="@+id/_rtb"
+        android:id="@+id/repeatTypeableButtonNext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:background="?android:selectableItemBackground"
         android:elevation="10dp"
         android:padding="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/_reeditText"
+        app:layout_constraintBottom_toBottomOf="@+id/repeatTypeableEnterField"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/_reeditText"
+        app:layout_constraintTop_toTopOf="@+id/repeatTypeableEnterField"
         app:srcCompat="@drawable/ic_keyboard_arrow_right_black_48px" />
 
     <EditText
-        android:id="@+id/_reeditText"
+        android:id="@+id/repeatTypeableEnterField"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -56,7 +56,7 @@
         android:text="gggggggggggggggggggggggrrrrr123"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/_rttextView" />
+        app:layout_constraintTop_toBottomOf="@+id/repeatTypeableDescription" />
 
 
 </android.support.constraint.ConstraintLayout>

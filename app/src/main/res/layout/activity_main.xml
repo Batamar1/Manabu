@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
     <!-- The navigation drawer -->
     <ListView
-        android:id="@+id/main_left_drawer"
+        android:id="@+id/mainLeftDrawer"
         android:layout_width="@dimen/navigation_drawer_width"
         android:layout_height="match_parent"
         android:layout_gravity="start"
@@ -21,30 +21,30 @@
 
         <!-- Toolbar -->
         <include
-            android:id="@+id/main_toolbar_include"
+            android:id="@+id/mainToolbarInclude"
             layout="@layout/toolbar_actionbar" />
 
         <android.support.constraint.Guideline
-            android:id="@+id/main_50_guideline"
+            android:id="@+id/mainFiftyGuideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5" />
 
         <Button
-            android:id="@+id/main_button_lessons"
+            android:id="@+id/mainButtonLessons"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="Button"
-            app:layout_constraintEnd_toStartOf="@+id/main_50_guideline"
+            app:layout_constraintEnd_toStartOf="@+id/mainFiftyGuideline"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_toolbar_include" />
+            app:layout_constraintTop_toBottomOf="@+id/mainToolbarInclude" />
 
         <Button
-            android:id="@+id/main_button_repeats"
+            android:id="@+id/mainButtonRepeats"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -53,8 +53,8 @@
             android:text="Button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/main_50_guideline"
-            app:layout_constraintTop_toBottomOf="@+id/main_toolbar_include" />
+            app:layout_constraintStart_toStartOf="@+id/mainFiftyGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/mainToolbarInclude" />
 
     </android.support.constraint.ConstraintLayout>
 

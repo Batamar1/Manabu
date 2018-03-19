@@ -8,20 +8,20 @@
     tools:context="me.manabu.activities.LoginActivity">
 
     <TextView
-        android:id="@+id/login_textview_logo"
+        android:id="@+id/loginTextLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="@string/app_name"
         android:textSize="48sp"
-        app:layout_constraintBottom_toTopOf="@+id/login_textview_auth"
+        app:layout_constraintBottom_toTopOf="@+id/loginTextHelper"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3" />
 
     <TextView
-        android:id="@+id/login_textview_auth"
+        android:id="@+id/loginTextHelper"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -30,12 +30,12 @@
         android:text="@string/login_text_auth"
         android:textAlignment="center"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/login_button_google"
+        app:layout_constraintBottom_toTopOf="@+id/loginButtonGoogle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.shobhitpuri.custombuttons.GoogleSignInButton
-        android:id="@+id/login_button_google"
+        android:id="@+id/loginButtonGoogle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"

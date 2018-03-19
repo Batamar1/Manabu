@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/item_decks_deck_title"
+        android:id="@+id/itemDeckTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -16,28 +16,28 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/item_decks_deck_description"
+        android:id="@+id/itemDeckDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/item_decks_deck_title" />
+        app:layout_constraintTop_toBottomOf="@+id/itemDeckTitle" />
 
     <TextView
-        android:id="@+id/item_decks_deck_cards_count"
+        android:id="@+id/itemDeckCardsCounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-        app:layout_constraintBottom_toTopOf="@+id/item_decks_deck_cards_text"
-        app:layout_constraintEnd_toEndOf="@+id/item_decks_deck_cards_text"
-        app:layout_constraintStart_toStartOf="@+id/item_decks_deck_cards_text"
+        app:layout_constraintBottom_toTopOf="@+id/itemDeckCardsText"
+        app:layout_constraintEnd_toEndOf="@+id/itemDeckCardsText"
+        app:layout_constraintStart_toStartOf="@+id/itemDeckCardsText"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/item_decks_deck_cards_text"
+        android:id="@+id/itemDeckCardsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
