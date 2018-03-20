@@ -1,4 +1,4 @@
-package me.manabu.utils
+package me.manabu.modules
 
 
 import android.app.Activity
@@ -16,7 +16,6 @@ import com.mikepenz.materialdrawer.AccountHeader
 import com.mikepenz.materialdrawer.AccountHeaderBuilder
 import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
-import com.mikepenz.materialdrawer.model.DividerDrawerItem
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem
 import com.mikepenz.materialdrawer.util.AbstractDrawerImageLoader
@@ -29,9 +28,9 @@ import me.manabu.R
 import me.manabu.activities.DecksActivity
 import me.manabu.activities.MainActivity
 
-class NavigationDrawer(private val activity: Activity, val toolbar: Toolbar) {
+class NavigationDrawer(private val activity: Activity, private val toolbar: Toolbar) {
 
-    var drawer: Drawer? = null
+    lateinit var drawer: Drawer
         private set
 
     private lateinit var accountHeader: AccountHeader
@@ -100,20 +99,19 @@ class NavigationDrawer(private val activity: Activity, val toolbar: Toolbar) {
         settings = PrimaryDrawerItem()
                 .withIcon(FontAwesome.Icon.faw_cog)
                 .withName(R.string.drawer_item_settings)
-        //.withOnDrawerItemClickListener(getClassClicker(SettingsActivity.class));
 
         logout = PrimaryDrawerItem()
                 .withIcon(FontAwesome.Icon.faw_sign_out_alt)
                 .withName(R.string.drawer_item_logout)
                 .withOnDrawerItemClickListener { _, _, _ ->
-                    AuthUtils.signOut(activity)
+                    Authentication.signOut(activity)
                     true
                 }
 
         profileDrawerItem = ProfileDrawerItem()
-                .withName(AuthUtils.account!!.displayName)
-                .withEmail(AuthUtils.account!!.email)
-                .withIcon(AuthUtils.account!!.photoUrl)
+                .withName(Authentication.account!!.displayName)
+                .withEmail(Authentication.account!!.email)
+                .withIcon(Authentication.account!!.photoUrl)
 
         accountHeader = AccountHeaderBuilder()
                 .withActivity(activity)
@@ -125,7 +123,7 @@ class NavigationDrawer(private val activity: Activity, val toolbar: Toolbar) {
     }
 
     private fun loadUserPictures(activity: Activity) {
-        Picasso.with(activity).load(AuthUtils.account?.photoUrl).into(object : Target {
+        Picasso.with(activity).load(Authentication.account?.photoUrl).into(object : Target {
             override fun onBitmapLoaded(bitmap: Bitmap, from: Picasso.LoadedFrom) {
                 //Once we get image - update header and variable
                 headerDrawable = BitmapDrawable(activity.resources, FastBlur.blur(bitmap, headerBlur, false))

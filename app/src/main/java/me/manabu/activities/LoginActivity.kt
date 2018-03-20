@@ -15,9 +15,14 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 
 import me.manabu.R
-import me.manabu.utils.AuthUtils
+import me.manabu.modules.Authentication
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
+
+    companion object {
+        const val RC_ACTIVITY_LOGIN = 100
+        private const val RC_LOGIN_GOOGLE = 101
+    }
 
     private var doubleBackToExitPressedOnce = false
 
@@ -32,7 +37,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View) {
         when (v.id) {
             R.id.loginButtonGoogle -> {
-                val signInIntent = AuthUtils.getClientForActivity(this).signInIntent
+                val signInIntent = Authentication.getClientForActivity(this).signInIntent
                 startActivityForResult(signInIntent, RC_LOGIN_GOOGLE)
             }
         }
@@ -57,15 +62,13 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
         try {
             val account = completedTask.getResult(ApiException::class.java)
-            AuthUtils.signIn(account)
-            Log.d("LoginActivity", "handleSignInResult done.")
-            setResult(RESULT_OK)
+            Authentication.signIn(account)
+            setResult(RESULT_OK, intent)
             finish()
         } catch (e: ApiException) {
             Toast.makeText(this,
-                    getString(R.string.login_error_google_sign_in) + ", #" + e.statusCode,
+                    "${getString(R.string.login_error_google_sign_in)}, #${e.statusCode}",
                     Toast.LENGTH_LONG).show()
-            Log.d("LoginActivity", "handleSignInResult failed: " + e.statusCode)
         }
 
     }
@@ -80,11 +83,5 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         Toast.makeText(this, resources.getString(R.string.main_double_exit), Toast.LENGTH_SHORT).show()
 
         Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 3000)
-    }
-
-    companion object {
-
-        val RC_ACTIVITY_LOGIN = 100
-        private val RC_LOGIN_GOOGLE = 101
     }
 }

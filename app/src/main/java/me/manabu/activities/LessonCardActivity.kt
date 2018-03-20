@@ -1,11 +1,7 @@
 package me.manabu.activities
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
 import android.util.Log
-import android.widget.ListView
-import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_lesson_card.*
 
 import java.util.ArrayList
@@ -15,7 +11,7 @@ import me.manabu.activities.parents.BasicToolbarActivity
 import me.manabu.adapters.LessonItemAdapter
 import me.manabu.adapters.models.LessonItemModel
 import me.manabu.webapi.models.DeckModel
-import me.manabu.utils.RetrofitUtils
+import me.manabu.webapi.Api
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -36,7 +32,7 @@ class LessonCardActivity : BasicToolbarActivity() {
     }
 
     private fun loadData() {
-        RetrofitUtils.retrofit.getLessonsFromDeck(DECK_ID).enqueue(object : Callback<List<DeckModel>> {
+        Api.retrofit.getLessonsFromDeck(DECK_ID).enqueue(object : Callback<List<DeckModel>> {
             override fun onResponse(call: Call<List<DeckModel>>, response: Response<List<DeckModel>>) {
                 if (response.isSuccessful) {
                     Log.d("LessonCardActivity", "Got deck #$DECK_ID!")

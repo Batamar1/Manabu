@@ -1,4 +1,4 @@
-package me.manabu.utils
+package me.manabu.modules
 
 
 import android.app.Activity
@@ -14,9 +14,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import me.manabu.R
 import me.manabu.activities.MainActivity
 
-object AuthUtils {
+object Authentication {
 
-    private var mGoogleSignInOptions: GoogleSignInOptions? = null
+    private lateinit var mGoogleSignInOptions: GoogleSignInOptions
     var account: GoogleSignInAccount? = null
         private set
 
@@ -26,48 +26,38 @@ object AuthUtils {
                 .requestEmail()
                 .build()
 
-        if (account == null) {
-            account = GoogleSignIn.getLastSignedInAccount(activity)
-        }
+        if (account == null) account = GoogleSignIn.getLastSignedInAccount(activity)
     }
 
-    fun isSignedIn(activity: Activity): Boolean {
-        if (account == null || account!!.account == null) {
-            Log.d("AuthUtils", "isSignedIn false")
-            return false
-        }
-        Log.d("AuthUtils", "isSignedIn true")
-        return true
+    fun isSignedIn(): Boolean {
+        account?.let { return true }
+        return false
     }
 
     fun signIn(account: GoogleSignInAccount) {
-        this.account = account
-        Log.d("AuthUtils", "signIn done")
+        Authentication.account = account
     }
 
     fun signOut(activity: Activity) {
         val client = getClientForActivity(activity)
         client.signOut()
-                .addOnSuccessListener { aVoid ->
+                .addOnSuccessListener { _ ->
                     account = null
 
                     val intent = Intent(activity, MainActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                     activity.startActivity(intent)
-
-                    Log.d("AuthUtils", "signOut success!")
                 }
-                .addOnFailureListener { e ->
+                .addOnFailureListener { _ ->
                     Toast.makeText(
                             activity,
-                            activity.resources.getString(R.string.main_double_exit),
+                            activity.resources.getString(R.string.login_sign_out_failed),
                             Toast.LENGTH_SHORT).show()
-                    Log.d("AuthUtils", "signOut failed!")
                 }
-                .addOnCompleteListener { e -> Log.d("AuthUtils", "signOut done!") }
+                .addOnCompleteListener { _ -> Log.d("Authentication", "signOut done!") }
     }
 
     fun getClientForActivity(activity: Activity): GoogleSignInClient {
-        return GoogleSignIn.getClient(activity, mGoogleSignInOptions!!)
+        return GoogleSignIn.getClient(activity, mGoogleSignInOptions)
     }
 }
