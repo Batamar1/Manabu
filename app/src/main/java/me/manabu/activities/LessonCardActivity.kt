@@ -7,7 +7,7 @@ import kotlinx.android.synthetic.main.activity_lesson_card.*
 import java.util.ArrayList
 
 import me.manabu.R
-import me.manabu.activities.parents.BasicToolbarActivity
+import me.manabu.activities.basics.BasicToolbarActivity
 import me.manabu.adapters.LessonItemAdapter
 import me.manabu.adapters.models.LessonItemModel
 import me.manabu.webapi.models.DeckModel

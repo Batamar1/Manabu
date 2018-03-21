@@ -1,4 +1,4 @@
-package me.manabu.activities.parents
+package me.manabu.activities.basics
 
 import android.support.annotation.IdRes
 import android.support.v7.app.AppCompatActivity

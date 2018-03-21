@@ -7,7 +7,8 @@ import android.view.View.GONE
 import android.view.inputmethod.InputMethodManager
 import kotlinx.android.synthetic.main.activity_repeat_typeable.*
 import me.manabu.R
-import me.manabu.activities.parents.BasicToolbarActivity
+import me.manabu.R.id.repeatTypeableButtonNext
+import me.manabu.activities.basics.BasicToolbarActivity
 import me.manabu.utils.DpUtils
 
 class RepeatTypeableActivity : BasicToolbarActivity() {
@@ -28,7 +29,7 @@ class RepeatTypeableActivity : BasicToolbarActivity() {
 
         setProperPadding()
 
-        var testItemsList = mutableListOf<ReviewItem>(
+        val testItemsList = mutableListOf<ReviewItem>(
                 ReviewItem("Test1", "test1"),
                 ReviewItem("Test2", "test2"),
                 ReviewItem("Test3", "test3")

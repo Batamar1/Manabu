@@ -2,7 +2,7 @@ package me.manabu.activities
 
 import android.os.Bundle
 import me.manabu.R
-import me.manabu.activities.parents.BasicToolbarActivity
+import me.manabu.activities.basics.BasicToolbarActivity
 
 class RepeatSwipeActivity : BasicToolbarActivity() {
 

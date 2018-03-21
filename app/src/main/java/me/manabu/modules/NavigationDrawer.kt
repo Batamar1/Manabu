@@ -123,7 +123,7 @@ class NavigationDrawer(private val activity: Activity, private val toolbar: Tool
     }
 
     private fun loadUserPictures(activity: Activity) {
-        Picasso.with(activity).load(Authentication.account?.photoUrl).into(object : Target {
+        Picasso.with(activity).load(Authentication.account!!.photoUrl).into(object : Target {
             override fun onBitmapLoaded(bitmap: Bitmap, from: Picasso.LoadedFrom) {
                 //Once we get image - update header and variable
                 headerDrawable = BitmapDrawable(activity.resources, FastBlur.blur(bitmap, headerBlur, false))

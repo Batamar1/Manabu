@@ -30,12 +30,12 @@ object Authentication {
     }
 
     fun isSignedIn(): Boolean {
-        account?.let { return true }
+        account?.account?.let { return true }
         return false
     }
 
     fun signIn(account: GoogleSignInAccount) {
-        Authentication.account = account
+        this.account = account
     }
 
     fun signOut(activity: Activity) {
