@@ -5,4 +5,5 @@ Manabu.iml
 gradlew
 gradlew.bat
 local.properties
-app/proguard-rules
+app/proguard-rules.pro
+app/app.iml
