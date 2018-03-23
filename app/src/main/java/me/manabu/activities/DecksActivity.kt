@@ -1,17 +1,15 @@
 package me.manabu.activities
 
 import android.os.Bundle
-import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.ListView
 import kotlinx.android.synthetic.main.activity_decks.*
 
 import java.util.ArrayList
 
 import me.manabu.R
-import me.manabu.activities.parents.BasicNavigationDrawerActivity
+import me.manabu.activities.basics.BasicNavigationDrawerActivity
 import me.manabu.adapters.DecksDeckAdapter
 import me.manabu.adapters.models.DecksDeckModel
 

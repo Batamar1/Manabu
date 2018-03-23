@@ -1,4 +1,4 @@
-package me.manabu.activities.parents
+package me.manabu.activities.basics
 
 import com.mikepenz.materialdrawer.Drawer
 

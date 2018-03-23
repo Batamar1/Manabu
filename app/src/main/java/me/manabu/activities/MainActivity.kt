@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 import me.manabu.R
 import me.manabu.activities.LoginActivity.Companion.RC_ACTIVITY_LOGIN
-import me.manabu.activities.parents.BasicNavigationDrawerActivity
+import me.manabu.activities.basics.BasicNavigationDrawerActivity
 import me.manabu.modules.Authentication
 
 class MainActivity : BasicNavigationDrawerActivity(), View.OnClickListener {
