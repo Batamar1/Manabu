@@ -19,7 +19,8 @@
     <string name="login_sign_out_failed">Can\'t sign out for some reason</string>
 
     <!-- Lesson Activity -->
-    <string name="lesson_text_next">Next item</string>
+    <string name="lesson_card_description_title">Description</string>
+    <string name="lesson_card_mnemonic_title">Mnemonic</string>
 
     <!-- Decks Activity -->
     <string name="decks_deck_text_cards">Cards</string>
@@ -31,5 +32,4 @@
     <string name="menu_item">menu_item</string>
     <string name="menu_decks_add">Create</string>
     <string name="decks_title_activity">Decks</string>
-
 </resources>

@@ -5,15 +5,13 @@ import android.support.design.widget.Snackbar
 import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_decks.*
-
-import java.util.ArrayList
-
 import me.manabu.R
-import me.manabu.activities.basics.BasicNavigationDrawerActivity
+import me.manabu.activities.basics.BasicNavigationDrawer
 import me.manabu.adapters.DecksDeckAdapter
 import me.manabu.adapters.models.DecksDeckModel
+import java.util.*
 
-class DecksActivity : BasicNavigationDrawerActivity() {
+class DecksActivity : BasicNavigationDrawer() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context="me.manabu.activities.DecksActivity">
 
-    <!-- The navigation drawer -->
     <ListView
         android:id="@+id/decksLeftDrawer"
         android:layout_width="@dimen/navigation_drawer_width"
@@ -17,7 +16,6 @@
         android:divider="@android:color/transparent"
         android:dividerHeight="0dp" />
 
-    <!-- Main Content -->
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

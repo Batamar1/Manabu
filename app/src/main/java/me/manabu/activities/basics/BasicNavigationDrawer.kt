@@ -1,10 +1,9 @@
 package me.manabu.activities.basics
 
 import com.mikepenz.materialdrawer.Drawer
-
 import me.manabu.modules.NavigationDrawer
 
-abstract class BasicNavigationDrawerActivity : BasicToolbarActivity() {
+abstract class BasicNavigationDrawer : BasicToolbar() {
 
     lateinit var drawer: Drawer
         private set

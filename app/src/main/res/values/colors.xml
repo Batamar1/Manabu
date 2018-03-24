@@ -13,4 +13,6 @@
 
     <color name="repeats_typeable_correct">#4CAF50</color>
     <color name="repeats_typeable_wrong">#F44336</color>
+
+    <color name="lessons_background">#EEE</color>
 </resources>

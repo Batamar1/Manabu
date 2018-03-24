@@ -7,12 +7,10 @@ import android.view.View.GONE
 import android.view.inputmethod.InputMethodManager
 import kotlinx.android.synthetic.main.activity_repeat_typeable.*
 import me.manabu.R
-import me.manabu.R.id.repeatTypeableButtonNext
-import me.manabu.activities.basics.BasicToolbarActivity
+import me.manabu.activities.basics.BasicToolbar
 import me.manabu.utils.DpUtils
 
-class RepeatTypeableActivity : BasicToolbarActivity() {
-
+class RepeatTypeable : BasicToolbar() {
 
     data class ReviewItem(var desc: String, var answer: String)
 

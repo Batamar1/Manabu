@@ -37,29 +37,45 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+
     //Android dependencies
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:support-compat:27.1.0'
     compile 'com.android.support:appcompat-v7:27.1.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:design:27.1.0'
+    implementation 'com.android.support:cardview-v7:27.1.0'
+
     //Google auth
     compile 'com.google.android.gms:play-services-auth:11.8.0'
+
     //Retrofit, HTTP lib
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+
     //Navigation Drawer
     implementation('com.mikepenz:materialdrawer:6.0.6@aar') {
         transitive = true
     }
+
+    //Font Awesome
     implementation 'com.mikepenz:fontawesome-typeface:5.0.6.0@aar'
+
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.5.2'
+
+    //Fresco filters
     compile 'jp.wasabeef:fresco-processors:2.1.0'
+
     //Google Sign In Button
     compile 'com.shobhitpuri.custombuttons:google-signin:1.0.0'
+
     //Material Dialogs
-    implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
+    //implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
+
+    //Core card library
+    compile 'com.github.gabrielemariotti.cards:library:1.9.1'
+
     //Tests
     testCompile 'junit:junit:4.12'
 }

@@ -2,9 +2,9 @@ package me.manabu.activities
 
 import android.os.Bundle
 import me.manabu.R
-import me.manabu.activities.basics.BasicToolbarActivity
+import me.manabu.activities.basics.BasicToolbar
 
-class RepeatSwipeActivity : BasicToolbarActivity() {
+class RepeatSwipe : BasicToolbar() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

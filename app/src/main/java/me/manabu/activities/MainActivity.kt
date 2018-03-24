@@ -8,13 +8,12 @@ import android.view.Menu
 import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
-
 import me.manabu.R
 import me.manabu.activities.LoginActivity.Companion.RC_ACTIVITY_LOGIN
-import me.manabu.activities.basics.BasicNavigationDrawerActivity
+import me.manabu.activities.basics.BasicNavigationDrawer
 import me.manabu.modules.Authentication
 
-class MainActivity : BasicNavigationDrawerActivity(), View.OnClickListener {
+class MainActivity : BasicNavigationDrawer(), View.OnClickListener {
 
     private var doubleBackToExitPressedOnce = false
 
@@ -61,7 +60,7 @@ class MainActivity : BasicNavigationDrawerActivity(), View.OnClickListener {
             startActivity(lessonsIntent)
         }
         mainButtonRepeats -> {
-            val repeatsIntent = Intent(v.context, RepeatTypeableActivity::class.java)
+            val repeatsIntent = Intent(v.context, RepeatTypeable::class.java)
             startActivity(repeatsIntent)
         }
         else -> {}

@@ -3,7 +3,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <!-- The navigation drawer -->
+
     <ListView
         android:id="@+id/mainLeftDrawer"
         android:layout_width="@dimen/navigation_drawer_width"
@@ -14,18 +14,16 @@
         android:divider="@android:color/transparent"
         android:dividerHeight="0dp" />
 
-    <!-- Main Content -->
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- Toolbar -->
         <include
             android:id="@+id/mainToolbarInclude"
             layout="@layout/toolbar_actionbar" />
 
         <android.support.constraint.Guideline
-            android:id="@+id/mainFiftyGuideline"
+            android:id="@+id/lessonCard33Line"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -39,7 +37,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="Button"
-            app:layout_constraintEnd_toStartOf="@+id/mainFiftyGuideline"
+            app:layout_constraintEnd_toStartOf="@+id/lessonCard33Line"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mainToolbarInclude" />
 
@@ -53,7 +51,7 @@
             android:text="Button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/mainFiftyGuideline"
+            app:layout_constraintStart_toStartOf="@+id/lessonCard33Line"
             app:layout_constraintTop_toBottomOf="@+id/mainToolbarInclude" />
 
     </android.support.constraint.ConstraintLayout>

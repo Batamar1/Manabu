@@ -10,7 +10,6 @@ import android.net.Uri
 import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.widget.ImageView
-
 import com.mikepenz.fontawesome_typeface_library.FontAwesome
 import com.mikepenz.materialdrawer.AccountHeader
 import com.mikepenz.materialdrawer.AccountHeaderBuilder
@@ -22,7 +21,6 @@ import com.mikepenz.materialdrawer.util.AbstractDrawerImageLoader
 import com.mikepenz.materialdrawer.util.DrawerImageLoader
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Target
-
 import jp.wasabeef.fresco.processors.internal.FastBlur
 import me.manabu.R
 import me.manabu.activities.DecksActivity
