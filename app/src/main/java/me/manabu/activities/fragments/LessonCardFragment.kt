@@ -10,13 +10,9 @@ import me.manabu.R
 class LessonCardFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val rootView = inflater.inflate(
+        return inflater.inflate(
                 R.layout.fragment_card_lesson,
                 container,
                 false) as ViewGroup
-
-
-
-        return rootView
     }
 }

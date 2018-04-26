@@ -11,7 +11,7 @@ import me.manabu.activities.fragments.LessonCardFragment
 
 class LessonCardActivity : FragmentActivity()  {
 
-    private var DECK_ID: Int = 0
+    //private var DECK_ID: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

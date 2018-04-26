@@ -3,14 +3,14 @@ package me.manabu.activities
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
+import android.support.v7.app.AppCompatActivity
 import android.view.View.GONE
 import android.view.inputmethod.InputMethodManager
 import kotlinx.android.synthetic.main.activity_repeat_typeable.*
 import me.manabu.R
-import me.manabu.activities.basics.BasicToolbar
 import me.manabu.utils.DpUtils
 
-class RepeatTypeable : BasicToolbar() {
+class RepeatTypeable : AppCompatActivity() {
 
     data class ReviewItem(var desc: String, var answer: String)
 
@@ -20,7 +20,7 @@ class RepeatTypeable : BasicToolbar() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_repeat_typeable)
-        setToolbar(R.id.repeatTypeableToolbarInclude)
+        //setToolbar(R.id.repeatTypeableToolbarInclude)
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)

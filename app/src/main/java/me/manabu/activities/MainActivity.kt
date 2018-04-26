@@ -3,24 +3,31 @@ package me.manabu.activities
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.view.Menu
-import android.view.View
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_main.*
+import com.mikepenz.materialdrawer.Drawer
 import me.manabu.R
 import me.manabu.activities.LoginActivity.Companion.RC_ACTIVITY_LOGIN
-import me.manabu.activities.basics.BasicNavigationDrawer
+import me.manabu.activities.fragments.MainFragment
 import me.manabu.modules.Authentication
+import me.manabu.modules.NavigationDrawer
 
-class MainActivity : BasicNavigationDrawer(), View.OnClickListener {
-
+class MainActivity : AppCompatActivity() {
     private var doubleBackToExitPressedOnce = false
+    lateinit var toolbar: Toolbar
+    lateinit var drawerVar: Drawer
+    private var currentFragment: Fragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setToolbar(R.id.mainToolbarInclude)
+
+        toolbar = findViewById(R.id.mainToolbarInclude)
+        setSupportActionBar(toolbar)
 
         Authentication.init(this)
 
@@ -31,17 +38,26 @@ class MainActivity : BasicNavigationDrawer(), View.OnClickListener {
             initDrawer()
         }
 
-        mainButtonLessons.text = "Уроки"
-        mainButtonLessons.setOnClickListener(this)
+        changeFragment(MainFragment())
 
-        mainButtonRepeats.text = "Повторения"
-        mainButtonRepeats.setOnClickListener(this)
+//        https://github.com/codepath/android_guides/wiki/Creating-and-Using-Fragments
+    }
+
+    fun changeFragment(fragment: Fragment) {
+        if (currentFragment != null && fragment == currentFragment) {
+            return
+        } else {
+            currentFragment = fragment
+        }
+
+        supportFragmentManager.beginTransaction()
+                .replace(R.id.mainFragmentInclude, currentFragment)
+                .commit()
     }
 
     private fun redirectIfNotSignedIn() {
         val i = Intent(this, LoginActivity::class.java)
         startActivityForResult(i, RC_ACTIVITY_LOGIN)
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
@@ -53,22 +69,9 @@ class MainActivity : BasicNavigationDrawer(), View.OnClickListener {
         }
     }
 
-    override fun onClick(v: View) = when (v) {
-        mainButtonLessons -> {
-            val lessonsIntent = Intent(v.context, LessonCardActivity::class.java)
-            lessonsIntent.putExtra("deckId", 2)
-            startActivity(lessonsIntent)
-        }
-        mainButtonRepeats -> {
-            val repeatsIntent = Intent(v.context, RepeatTypeable::class.java)
-            startActivity(repeatsIntent)
-        }
-        else -> {}
-    }
-
     override fun onBackPressed() {
-        if (drawer.isDrawerOpen) {
-            drawer.closeDrawer()
+        if (drawerVar.isDrawerOpen) {
+            drawerVar.closeDrawer()
             return
         }
 
@@ -91,5 +94,11 @@ class MainActivity : BasicNavigationDrawer(), View.OnClickListener {
         val inflater = menuInflater
         inflater.inflate(R.menu.menu_main, menu)
         return true
+    }
+
+    private fun initDrawer() {
+        //drawer = NavigationDrawer(this, toolbar).build()
+        drawerVar = NavigationDrawer.build(this)
+        NavigationDrawer.loadUserBackground(this)
     }
 }

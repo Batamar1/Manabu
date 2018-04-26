@@ -26,17 +26,11 @@
         <activity
             android:name=".activities.LessonCardActivity"
             android:label="Название колоды" />
-        <activity
-            android:name=".activities.RepeatSwipe"
-            android:label="@string/title_activity_repeat_card" />
-        <activity
-            android:name=".activities.DecksActivity"
-            android:label="@string/decks_title_activity" />
         <activity android:name=".activities.CreateDeckActivity" />
         <activity android:name=".activities.EditDeckActivity" />
         <activity android:name=".activities.EditDeckItemActivity" />
         <activity android:name=".activities.SettingsActivity" />
-        <activity android:name=".activities.RepeatTypeable"></activity>
+        <activity android:name=".activities.RepeatTypeable" />
     </application>
 
 </manifest>

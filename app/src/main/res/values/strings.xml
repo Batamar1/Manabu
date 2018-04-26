@@ -22,8 +22,10 @@
     <string name="lesson_card_description_title">Description</string>
     <string name="lesson_card_mnemonic_title">Mnemonic</string>
 
-    <!-- Decks Activity -->
+    <!-- Decks Fragment -->
     <string name="decks_deck_text_cards">Cards</string>
+    <string name="decks_deck_progress_title">Please wait</string>
+    <string name="decks_deck_progress_content">Loading decks</string>
 
     <!-- Repeat Activity -->
     <string name="title_activity_repeat_card" translatable="false">RepeatCardActivity</string>
