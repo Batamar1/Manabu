@@ -8,8 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_main.*
 import me.manabu.R
-import me.manabu.activities.LessonCardActivity
+import me.manabu.activities.LessonsActivity
 import me.manabu.activities.RepeatTypeable
+import me.manabu.modules.CurrentUser
 
 class MainFragment : Fragment(), View.OnClickListener {
 
@@ -24,11 +25,17 @@ class MainFragment : Fragment(), View.OnClickListener {
 
         mainButtonRepeats.text = "Повторения"
         mainButtonRepeats.setOnClickListener(this)
+
+        //https://developer.android.com/guide/topics/ui/controls/spinner
+
+
+        //Надо подождать. Асинхрон говно
+        mainTextView.text = CurrentUser.decks.joinToString(", ", prefix = "<", postfix = ">", transform = {deckModel -> deckModel.name!! })
     }
 
     override fun onClick(v: View) = when (v) {
         mainButtonLessons -> {
-            val lessonsIntent = Intent(v.context, LessonCardActivity::class.java)
+            val lessonsIntent = Intent(v.context, LessonsActivity::class.java)
             lessonsIntent.putExtra("deckId", 2)
             startActivity(lessonsIntent)
         }

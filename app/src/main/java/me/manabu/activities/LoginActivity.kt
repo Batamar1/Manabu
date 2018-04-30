@@ -13,7 +13,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import me.manabu.R
-import me.manabu.modules.Authentication
+import me.manabu.modules.CurrentUser
+import me.manabu.modules.GoogleAuth
+import org.jetbrains.anko.toast
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -35,7 +37,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View) {
         when (v.id) {
             R.id.loginButtonGoogle -> {
-                val signInIntent = Authentication.getClientForActivity(this).signInIntent
+                val signInIntent = GoogleAuth.getClientForActivity(this).signInIntent
                 startActivityForResult(signInIntent, RC_LOGIN_GOOGLE)
             }
         }
@@ -60,13 +62,11 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
         try {
             val account = completedTask.getResult(ApiException::class.java)
-            Authentication.signIn(account)
+            CurrentUser.set(account)
             setResult(RESULT_OK, intent)
             finish()
         } catch (e: ApiException) {
-            Toast.makeText(this,
-                    "${getString(R.string.login_error_google_sign_in)}, #${e.statusCode}",
-                    Toast.LENGTH_LONG).show()
+            toast("${getString(R.string.login_error_google_sign_in)}, #${e.statusCode}")
         }
 
     }
@@ -78,7 +78,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         this.doubleBackToExitPressedOnce = true
-        Toast.makeText(this, resources.getString(R.string.main_double_exit), Toast.LENGTH_SHORT).show()
+        toast(resources.getString(R.string.main_double_exit))
 
         Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 3000)
     }

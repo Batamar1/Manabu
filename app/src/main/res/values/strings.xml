@@ -8,6 +8,10 @@
     <string name="drawer_item_settings">Settings</string>
     <string name="drawer_item_logout">Logout</string>
 
+    <!-- Loading Fragment -->
+    <string name="loading_fragment_text">We are loading your data</string>
+    <string name="loading_fragment_text_failed">Something went wrong. Want to try again?</string>
+
     <!-- Main Activity -->
     <string name="main_double_exit">Click one more time for app to close.</string>
 
@@ -34,4 +38,7 @@
     <string name="menu_item">menu_item</string>
     <string name="menu_decks_add">Create</string>
     <string name="decks_title_activity">Decks</string>
+
+    <!-- Usefull -->
+    <string name="try_again">Try again</string>
 </resources>

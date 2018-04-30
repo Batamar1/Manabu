@@ -18,7 +18,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/card_header_background"
-            app:layout_constraintBottom_toTopOf="@id/lessonCard33Line"
+            app:layout_constraintBottom_toTopOf="@id/main50Line"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -43,7 +43,7 @@
         </android.support.constraint.ConstraintLayout>
 
         <android.support.constraint.Guideline
-            android:id="@+id/lessonCard33Line"
+            android:id="@+id/main50Line"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -56,7 +56,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/lessonCard33Line">
+            app:layout_constraintTop_toTopOf="@+id/main50Line">
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"

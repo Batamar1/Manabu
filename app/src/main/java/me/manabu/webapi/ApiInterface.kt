@@ -15,4 +15,7 @@ interface ApiInterface {
     @GET("/api/v1/deck_to_user/{id}/{userId}")
     fun copyDeckToUser(@Path("id") id: String, @Path("userId") userId: String): Call<ResponseBody>
 
+    @GET("/api/v1/user_decks/get/{userId}")
+    fun getUserDecks(@Path("userId") userId: String): Call<BasicResponse<List<DeckModel>>>
+
 }

@@ -37,8 +37,8 @@ object NavigationDrawer {
 
 
     fun build(context: MainActivity): Drawer {
-        if (Authentication.account == null) {
-            throw ExceptionInInitializerError("Account still not initialized")
+        if (!CurrentUser.isSignedIn()) {
+            throw ExceptionInInitializerError("Account still not initialized \nWhy are you actually trying to build a drawer, when we're still not logged in?")
         }
 
         initImageLoader()
@@ -51,17 +51,16 @@ object NavigationDrawer {
             stickyFooterShadow = false
             stickyFooterDivider = true
 
-            Authentication.account!!.let {
-                accountHeader = accountHeader {
-                    profileImagesClickable = false
-                    selectionListEnabled = false
-                    backgroundDrawable = getBg(context)
+            accountHeader = accountHeader {
+                profileImagesClickable = false
+                selectionListEnabled = false
+                backgroundDrawable = getBg(context)
 
-                    userProfile = profile(it.displayName!!, it.email!!) {
-                        iconUrl = it.photoUrl.toString()
-                    }
+                userProfile = profile(CurrentUser.getAccount().displayName!!, CurrentUser.getAccount().email!!) {
+                    iconUrl = CurrentUser.getAccount().photoUrl.toString()
                 }
             }
+
 
             //Elements
             mainPage = primaryItem(R.string.drawer_item_home) {
@@ -88,7 +87,7 @@ object NavigationDrawer {
                 logout = primaryItem(R.string.drawer_item_logout) {
                     iicon = FontAwesome.Icon.faw_sign_out_alt
                     onClick { _ ->
-                        Authentication.signOut(context)
+                        CurrentUser.signOut(context)
                         false
                     }
                 }
@@ -98,7 +97,7 @@ object NavigationDrawer {
     }
 
     private fun getBg(activity: Activity): Drawable {
-        if(headerDrawable != null)
+        if (headerDrawable != null)
             return headerDrawable as Drawable
 
         return activity.getDrawable(R.drawable.header)
@@ -123,7 +122,7 @@ object NavigationDrawer {
     }
 
     fun loadUserBackground(activity: Activity) {
-        Picasso.with(activity).load(Authentication.account!!.photoUrl).into(object : com.squareup.picasso.Target {
+        Picasso.with(activity).load(CurrentUser.getAccount().photoUrl).into(object : com.squareup.picasso.Target {
             override fun onPrepareLoad(placeHolderDrawable: Drawable?) {
                 activity.toast("Navigation Drawer: Loading BG")
             }
@@ -133,9 +132,11 @@ object NavigationDrawer {
             }
 
             override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
-                //Once we get image - update header and variable
+                //Once we getAccount image - update header and variable
                 headerDrawable = BitmapDrawable(activity.resources, FastBlur.blur(bitmap, headerBlur, false))
                 accountHeader.setBackground(headerDrawable)
+
+                activity.toast("Navigation Drawer: BG was loaded!")
             }
         })
     }

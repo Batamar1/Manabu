@@ -3,6 +3,7 @@
     package="me.manabu">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -24,7 +25,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".activities.LessonCardActivity"
+            android:name=".activities.LessonsActivity"
             android:label="Название колоды" />
         <activity android:name=".activities.CreateDeckActivity" />
         <activity android:name=".activities.EditDeckActivity" />

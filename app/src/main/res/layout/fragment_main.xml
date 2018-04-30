@@ -1,14 +1,26 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <android.support.constraint.Guideline
-        android:id="@+id/lessonCard33Line"
+        android:id="@+id/mainButtonsTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="308dp" />
 
     <Button
         android:id="@+id/mainButtonLessons"
@@ -18,9 +30,16 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Button"
-        app:layout_constraintEnd_toStartOf="@+id/lessonCard33Line"
+        app:layout_constraintEnd_toStartOf="@+id/main50Line"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/mainButtonsTop" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/main50Line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
     <Button
         android:id="@+id/mainButtonRepeats"
@@ -32,7 +51,21 @@
         android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/lessonCard33Line"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/main50Line"
+        app:layout_constraintTop_toTopOf="@+id/mainButtonsTop" />
+
+    <TextView
+        android:id="@+id/mainTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainButtonRepeats" />
 
 </android.support.constraint.ConstraintLayout>
