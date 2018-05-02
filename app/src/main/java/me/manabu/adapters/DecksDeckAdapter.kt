@@ -1,6 +1,7 @@
 package me.manabu.adapters
 
 import android.app.Activity
+import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
@@ -10,8 +11,8 @@ import me.manabu.R
 import me.manabu.webapi.models.DeckModel
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
-class DecksDeckAdapter(private val activityContext: Activity, private val data: MutableList<DeckModel>) :
-        ArrayAdapter<DeckModel>(activityContext, R.layout.item_decks_deck, data) {
+class DecksDeckAdapter(context: Context, private val data: MutableList<DeckModel>) :
+        ArrayAdapter<DeckModel>(context, R.layout.item_decks_deck, data) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
 

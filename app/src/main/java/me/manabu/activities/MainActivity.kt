@@ -3,16 +3,12 @@ package me.manabu.activities
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.view.Menu
-import android.view.View
 import com.mikepenz.materialdrawer.Drawer
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_loading.*
 import me.manabu.R
 import me.manabu.activities.LoginActivity.Companion.RC_ACTIVITY_LOGIN
 import me.manabu.activities.fragments.LoadingFragment
@@ -23,8 +19,8 @@ import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity() {
 
+    private var drawer: Drawer? = null
     lateinit var toolbar: Toolbar
-    var drawer: Drawer? = null
 
     private var doubleBackToExitPressedOnce = false
     private var currentFragment: Fragment? = null
@@ -54,8 +50,6 @@ class MainActivity : AppCompatActivity() {
                 return
             }
         }
-
-        Log.d("WHY", fragment.toString() + " " + currentFragment.toString())
 
         currentFragment = fragment
 

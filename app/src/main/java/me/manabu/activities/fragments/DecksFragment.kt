@@ -96,8 +96,7 @@ class DecksFragment : Fragment() {
     }
 
     private fun updateDecksList() {
-        val adapter = DecksDeckAdapter(activity!!, _decks)
-        decksListOfDecks.adapter = adapter
+        decksListOfDecks.adapter = DecksDeckAdapter(activity!!, _decks)
     }
 
     private fun showDialog() {

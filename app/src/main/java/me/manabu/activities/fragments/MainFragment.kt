@@ -2,17 +2,22 @@ package me.manabu.activities.fragments;
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment;
+import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.jaredrummler.materialspinner.MaterialSpinner
 import kotlinx.android.synthetic.main.fragment_main.*
 import me.manabu.R
 import me.manabu.activities.LessonsActivity
 import me.manabu.activities.RepeatTypeable
 import me.manabu.modules.CurrentUser
 
-class MainFragment : Fragment(), View.OnClickListener {
+
+class MainFragment : Fragment(), View.OnClickListener, MaterialSpinner.OnItemSelectedListener<String> {
+
+    private var currentDeck: Int? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? = inflater.inflate(
                 R.layout.fragment_main,
@@ -26,17 +31,24 @@ class MainFragment : Fragment(), View.OnClickListener {
         mainButtonRepeats.text = "Повторения"
         mainButtonRepeats.setOnClickListener(this)
 
-        //https://developer.android.com/guide/topics/ui/controls/spinner
-
-
-        //Надо подождать. Асинхрон говно
-        mainTextView.text = CurrentUser.decks.joinToString(", ", prefix = "<", postfix = ">", transform = {deckModel -> deckModel.name!! })
+        val deckList = CurrentUser.decks.map{deckModel -> deckModel.name!!}.toMutableList()
+        mainDeckChooser.setItems(deckList)
+        mainDeckChooser.setOnItemSelectedListener(this)
     }
 
+    //OnChooserClicks
+    override fun onItemSelected(view: MaterialSpinner?, position: Int, id: Long, item: String?) {
+        Log.d("Tag", currentDeck.toString())
+
+
+        currentDeck = position
+    }
+
+    //OnButtonClicks
     override fun onClick(v: View) = when (v) {
         mainButtonLessons -> {
             val lessonsIntent = Intent(v.context, LessonsActivity::class.java)
-            lessonsIntent.putExtra("deckId", 2)
+            lessonsIntent.putExtra(LessonsActivity.DECK_ID, currentDeck)
             startActivity(lessonsIntent)
         }
         mainButtonRepeats -> {

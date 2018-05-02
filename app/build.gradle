@@ -81,6 +81,9 @@ dependencies {
     //Material Dialogs
     implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
 
+    //Material Spinner
+    implementation 'com.jaredrummler:material-spinner:1.2.5'
+
     //Core card library
     //implementation 'com.github.gabrielemariotti.cards:library:1.9.1'
 
