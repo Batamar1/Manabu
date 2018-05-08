@@ -11,7 +11,7 @@ import com.jaredrummler.materialspinner.MaterialSpinner
 import kotlinx.android.synthetic.main.fragment_main.*
 import me.manabu.R
 import me.manabu.activities.LessonsActivity
-import me.manabu.activities.RepeatTypeable
+import me.manabu.activities.MainActivity
 import me.manabu.modules.CurrentUser
 
 
@@ -19,10 +19,14 @@ class MainFragment : Fragment(), View.OnClickListener, MaterialSpinner.OnItemSel
 
     private var currentDeck: Int? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? = inflater.inflate(
-                R.layout.fragment_main,
-                container,
-                false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return if (CurrentUser.decks.isEmpty()) {
+            (activity as MainActivity).changeFragment(NoDecksFragment())
+            null
+        } else {
+            inflater.inflate(R.layout.fragment_main, container, false)
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         mainButtonLessons.text = "Уроки"
@@ -31,16 +35,14 @@ class MainFragment : Fragment(), View.OnClickListener, MaterialSpinner.OnItemSel
         mainButtonRepeats.text = "Повторения"
         mainButtonRepeats.setOnClickListener(this)
 
-        val deckList = CurrentUser.decks.map{deckModel -> deckModel.name!!}.toMutableList()
+        val deckList = CurrentUser.decks.map { deckModel -> deckModel.name }.toMutableList()
         mainDeckChooser.setItems(deckList)
         mainDeckChooser.setOnItemSelectedListener(this)
+        currentDeck = mainDeckChooser.selectedIndex
     }
 
     //OnChooserClicks
     override fun onItemSelected(view: MaterialSpinner?, position: Int, id: Long, item: String?) {
-        Log.d("Tag", currentDeck.toString())
-
-
         currentDeck = position
     }
 
@@ -48,13 +50,13 @@ class MainFragment : Fragment(), View.OnClickListener, MaterialSpinner.OnItemSel
     override fun onClick(v: View) = when (v) {
         mainButtonLessons -> {
             val lessonsIntent = Intent(v.context, LessonsActivity::class.java)
-            lessonsIntent.putExtra(LessonsActivity.DECK_ID, currentDeck)
+            lessonsIntent.putExtra(LessonsActivity.DECK_ID_INTENT, currentDeck)
             startActivity(lessonsIntent)
         }
         mainButtonRepeats -> {
-            val repeatsIntent = Intent(v.context, RepeatTypeable::class.java)
-            startActivity(repeatsIntent)
+//            val repeatsIntent = Intent(v.context, RepeatTypeable::class.java)
+//            startActivity(repeatsIntent)
         }
-        else -> {}
+        else -> { }
     }
 }

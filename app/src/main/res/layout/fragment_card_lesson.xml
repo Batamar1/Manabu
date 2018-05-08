@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/lessons_background">
+    android:layout_height="match_parent">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -25,15 +24,15 @@
 
             <TextView
                 android:id="@+id/lessonCardHeaderText"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="8dp"
                 android:maxLines="4"
                 android:minLines="1"
-                android:text="Header Text"
+                android:textAlignment="center"
                 android:textColor="@color/primary_background_text"
                 android:textSize="@dimen/lesson_card_header_text_size"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -61,10 +60,7 @@
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="24dp"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:paddingTop="24dp">
+                android:padding="16dp">
 
                 <TextView
                     android:id="@+id/lessonCardDescTitle"
@@ -80,7 +76,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="Random Text"
                     android:textSize="@dimen/lesson_card_content_text_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/lessonCardDescTitle" />
@@ -89,15 +84,16 @@
                     android:id="@+id/lessonCardContentDivider"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="16dp"
                     android:background="@android:color/darker_gray"
-                    app:layout_constraintTop_toBottomOf="@id/lessonCardDestText" />
+                    app:layout_constraintTop_toBottomOf="@id/lessonCardDestText"
+                    tools:layout_editor_absoluteX="16dp" />
 
                 <TextView
                     android:id="@+id/lessonCardMnemonicTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="16dp"
                     android:text="@string/lesson_card_mnemonic_title"
                     android:textSize="@dimen/lesson_card_content_header_text_size"
                     app:layout_constraintStart_toStartOf="parent"
@@ -108,13 +104,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="Random Text"
+                    android:text="@string/placeholder"
                     android:textSize="@dimen/lesson_card_content_text_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/lessonCardMnemonicTitle" />
 
             </android.support.constraint.ConstraintLayout>
         </ScrollView>
-
     </android.support.constraint.ConstraintLayout>
 </FrameLayout>

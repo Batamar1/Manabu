@@ -8,35 +8,25 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_loading.*
+import kotlinx.android.synthetic.main.fragment_nodecks.*
 import me.manabu.R
 import me.manabu.activities.MainActivity
+import me.manabu.modules.NavigationDrawer
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
-class LoadingFragment : Fragment() {
+class NoDecksFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? = inflater.inflate(
-            R.layout.fragment_loading,
+            R.layout.fragment_nodecks,
             container,
             false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        loadingFragmentRetryButton.onClick {
-            (activity as MainActivity).loadDataForSignedUser()
-            removeError()
+        noDecksButton.onClick {
+            (activity as MainActivity).changeFragment(DecksFragment())
+            (activity as MainActivity).drawer!!.setSelection(NavigationDrawer.decksPage)
         }
-    }
-
-    private fun removeError(){
-        loadingFragmentPBar.visibility = VISIBLE
-        loadingFragmentText.text = getString(R.string.loading_fragment_text)
-        loadingFragmentRetryButton.visibility = GONE
-    }
-
-    fun showError(){
-        loadingFragmentPBar.visibility = GONE
-        loadingFragmentText.text = getString(R.string.loading_fragment_text_failed)
-        loadingFragmentRetryButton.visibility = VISIBLE
     }
 }

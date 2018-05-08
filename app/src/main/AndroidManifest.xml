@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.MainActivity">
+        <activity
+            android:name=".activities.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,16 +23,10 @@
         </activity>
         <activity
             android:name=".activities.LoginActivity"
-            android:label="@string/login_title_activity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".activities.LessonsActivity"
-            android:label="Название колоды" />
-        <activity android:name=".activities.CreateDeckActivity" />
-        <activity android:name=".activities.EditDeckActivity" />
-        <activity android:name=".activities.EditDeckItemActivity" />
-        <activity android:name=".activities.SettingsActivity" />
+            android:name=".activities.LessonsActivity" />
         <activity android:name=".activities.RepeatTypeable" />
     </application>
 

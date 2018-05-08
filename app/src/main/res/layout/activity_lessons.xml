@@ -14,9 +14,23 @@
         android:id="@+id/lessonCardsPager"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@color/lessons_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lessonToolbarInclude" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/lessonsFabToReview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="24dp"
+        android:src="@drawable/ic_keyboard_arrow_right_black_48px"
+        android:tint="@color/md_white_1000"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
 </android.support.constraint.ConstraintLayout>

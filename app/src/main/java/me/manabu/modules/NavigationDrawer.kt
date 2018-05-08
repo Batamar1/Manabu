@@ -20,6 +20,7 @@ import me.manabu.R
 import me.manabu.activities.MainActivity
 import me.manabu.activities.fragments.DecksFragment
 import me.manabu.activities.fragments.MainFragment
+import me.manabu.activities.fragments.SettingsFragment
 import org.jetbrains.anko.toast
 
 object NavigationDrawer {
@@ -30,7 +31,7 @@ object NavigationDrawer {
     private var headerDrawable: Drawable? = null
 
     private lateinit var mainPage: PrimaryDrawerItem
-    private lateinit var decksPage: PrimaryDrawerItem
+    lateinit var decksPage: PrimaryDrawerItem
     private lateinit var settings: PrimaryDrawerItem
     private lateinit var logout: PrimaryDrawerItem
     private lateinit var userProfile: ProfileDrawerItem
@@ -81,6 +82,7 @@ object NavigationDrawer {
                 settings = primaryItem(R.string.drawer_item_settings) {
                     iicon = FontAwesome.Icon.faw_cog
                     onClick { _ ->
+                        context.changeFragment(SettingsFragment())
                         false
                     }
                 }

@@ -1,5 +1,3 @@
 package me.manabu.webapi.models
 
-data class BasicResponse<E>(var status: Status, var data: E, var errors: String)
-
-enum class Status { SUCCESS, FAIL }
+data class BasicResponse<E>(val status: ResponseStatus, val data: E, val errors: MutableList<String>)

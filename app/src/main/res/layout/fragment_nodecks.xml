@@ -5,53 +5,49 @@
     android:layout_height="match_parent"
     android:layout_gravity="center_vertical">
 
-    <ProgressBar
-        android:id="@+id/loadingFragmentPBar"
+    <ImageView
+        android:id="@+id/noDecksIcon"
+        android:layout_width="@dimen/no_decks_icon_size"
+        android:layout_height="@dimen/no_decks_icon_size"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/noDecksText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_sort_black_48px" />
+
+    <TextView
+        android:id="@+id/noDecksText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:indeterminate="true"
-        app:layout_constraintBottom_toTopOf="@+id/loadingFragmentText"
+        android:text="@string/no_decks_text"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        app:layout_constraintBottom_toTopOf="@+id/noDecksButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
-    <TextView
-        android:id="@+id/loadingFragmentText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/loading_fragment_text"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        app:layout_constraintBottom_toTopOf="@+id/loadingFragmentRetryButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loadingFragmentPBar" />
-
     <Button
-        android:id="@+id/loadingFragmentRetryButton"
-        style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+        android:id="@+id/noDecksButton"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/try_again"
-        android:visibility="gone"
+        android:text="@string/no_decks_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loadingFragmentText" />
+        app:layout_constraintTop_toBottomOf="@+id/noDecksText" />
 
 </android.support.constraint.ConstraintLayout>

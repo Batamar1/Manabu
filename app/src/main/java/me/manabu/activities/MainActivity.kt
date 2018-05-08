@@ -13,13 +13,14 @@ import me.manabu.R
 import me.manabu.activities.LoginActivity.Companion.RC_ACTIVITY_LOGIN
 import me.manabu.activities.fragments.LoadingFragment
 import me.manabu.activities.fragments.MainFragment
+import me.manabu.activities.fragments.NoDecksFragment
 import me.manabu.modules.CurrentUser
 import me.manabu.modules.NavigationDrawer
 import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity() {
 
-    private var drawer: Drawer? = null
+    var drawer: Drawer? = null
     lateinit var toolbar: Toolbar
 
     private var doubleBackToExitPressedOnce = false
@@ -103,14 +104,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun loadDataForSignedUser() {
-        if (drawer == null) {
-            initDrawer()
-        }
+        CurrentUser.receiveDecks({
+            if (drawer == null) {
+                initDrawer()
+            }
 
-        CurrentUser.receiveDecks(
-                { changeFragment(MainFragment()) },
-                { (currentFragment as LoadingFragment).showError() })
-
+            if(CurrentUser.decks.isEmpty()){
+                changeFragment(NoDecksFragment())
+            } else {
+                changeFragment(MainFragment())
+            }
+        }, {
+            (currentFragment as LoadingFragment).showError()
+        })
     }
 
     private fun initDrawer() {

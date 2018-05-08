@@ -8,10 +8,25 @@
     <string name="drawer_item_home">Главная</string>
     <string name="drawer_item_decks">Колоды</string>
     <string name="login_sign_out_failed">Неизвестная ошибка при выходе</string>
-    <string name="lesson_text_next">Далее</string>
     <string name="login_error_google_sign_in">Не могу войти</string>
     <string name="decks_deck_text_cards">Карточек</string>
     <string name="menu_decks_add">Создать</string>
     <string name="decks_title_activity">Колоды</string>
     <string name="drawer_item_settings">Настроки</string>
+    <string name="loading_fragment_text_failed">Что-то пошло не так. Хотите попробовать ещё раз?</string>
+    <string name="main_deck_current">"Текущая колода: "</string>
+    <string name="decks_deck_added">Колода добавлена</string>
+    <string name="decks_deck_adding_failed">Не удалось добавить колоду. Попробуйте ещё раз</string>
+    <string name="decks_deck_removed">Колода удалена</string>
+    <string name="decks_deck_removing_failed">Не удалось удалить колоду. Попробуйте ещё раз</string>
+    <string name="decks_deck_progress_title">Пожалуйста, подождите</string>
+    <string name="decks_deck_progress_content">Загружаем колоды</string>
+    <string name="lesson_card_description_title">Описание</string>
+    <string name="lesson_card_mnemonic_title">Мнемоника</string>
+    <string name="try_again">Попробуйте ещё раз</string>
+    <string name="error2dot">"Ошибка: "</string>
+    <string name="no_decks_text">У вас пока нет колод.</string>
+    <string name="no_decks_button">Хотите добавить парочку?</string>
+    <string name="placeholder">Тут что-нибудь будет... позже.</string>
+    <string name="lesson_error_get_deck">Не удаётся загрузить ваши уроки. Попробуйте позже</string>
 </resources>

@@ -18,20 +18,28 @@
     <string name="main_deck_current">Current deck:</string>
 
     <!-- Login Activity -->
-    <string name="login_title_activity" translatable="false">LoginActivity</string>
     <string name="login_text_auth">Sign in to start learning :)</string>
     <string name="login_button_google">Sign in through Google</string>
     <string name="login_error_google_sign_in">Sign in failed</string>
     <string name="login_sign_out_failed">Can\'t sign out for some reason</string>
 
     <!-- Lesson Activity -->
+    <string name="lesson_error_get_deck">Can\'t load your lessons. Try again</string>
     <string name="lesson_card_description_title">Description</string>
     <string name="lesson_card_mnemonic_title">Mnemonic</string>
 
     <!-- Decks Fragment -->
     <string name="decks_deck_text_cards">Cards</string>
+    <string name="decks_deck_added">Deck was added</string>
+    <string name="decks_deck_adding_failed">Can\'t add deck. Try again</string>
+    <string name="decks_deck_removed">Deck was removed</string>
+    <string name="decks_deck_removing_failed">Can\'t remove deck. Try again!</string>
     <string name="decks_deck_progress_title">Please wait</string>
     <string name="decks_deck_progress_content">Loading decks</string>
+
+    <!-- No Decks Fragment -->
+    <string name="no_decks_text">You have no decks to learn</string>
+    <string name="no_decks_button">Would you like to add one?</string>
 
     <!-- Repeat Activity -->
     <string name="title_activity_repeat_card" translatable="false">RepeatCardActivity</string>
@@ -43,4 +51,7 @@
 
     <!-- Usefull -->
     <string name="try_again">Try again</string>
+    <string name="error2dot">Error: </string>
+
+    <string name="placeholder">Something will be here… later.</string>
 </resources>

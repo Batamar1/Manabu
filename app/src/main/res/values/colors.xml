@@ -9,10 +9,7 @@
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
 
-    <color name="primary_background_text">#FFFFFF</color>
+    <color name="primary_background_text">@color/md_white_1000</color>
 
-    <color name="repeats_typeable_correct">#4CAF50</color>
-    <color name="repeats_typeable_wrong">#F44336</color>
-
-    <color name="lessons_background">#EEE</color>
+    <color name="lessons_background">#eeeeee</color>
 </resources>

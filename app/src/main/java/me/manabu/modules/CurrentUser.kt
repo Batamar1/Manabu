@@ -12,6 +12,7 @@ import me.manabu.activities.MainActivity
 import me.manabu.webapi.Api
 import me.manabu.webapi.models.BasicResponse
 import me.manabu.webapi.models.DeckModel
+import me.manabu.webapi.models.UserDeckModel
 import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
@@ -20,8 +21,7 @@ import retrofit2.Response
 object CurrentUser {
 
     private var account: GoogleSignInAccount? = null
-    var decks: MutableList<DeckModel> = mutableListOf()
-    var decksLoaded = false
+    var decks: MutableList<UserDeckModel> = mutableListOf()
 
     fun loadInfo(context: Context) {
         if (account == null) account = GoogleSignIn.getLastSignedInAccount(context)
@@ -45,12 +45,11 @@ object CurrentUser {
     }
 
     fun signOut(activity: Activity) {
-        val client = getClient(activity)
+        val client = GoogleAuth.getClientForActivity(activity)
         client.signOut()
                 .addOnSuccessListener { _ ->
                     account = null
 
-                    decksLoaded = false
                     decks.removeAll {
                         true
                     }
@@ -63,28 +62,26 @@ object CurrentUser {
                 .addOnCompleteListener { _ -> Log.d("Authentication", "signOut done!") }
     }
 
-    fun receiveDecks(goodCallback: () -> Unit, badCallback: () -> Unit){
-        Api.retrofit.getUserDecks(CurrentUser.getAccount().id!!).enqueue(object : Callback<BasicResponse<List<DeckModel>>> {
-            override fun onResponse(call: Call<BasicResponse<List<DeckModel>>>?, response: Response<BasicResponse<List<DeckModel>>>?) {
+    fun receiveDecks(goodCallback: () -> Unit = {}, badCallback: () -> Unit = {}){
+        Api.retrofit.getUserDecks(CurrentUser.getAccount().id!!).enqueue(object : Callback<BasicResponse<List<UserDeckModel>>> {
+            override fun onResponse(call: Call<BasicResponse<List<UserDeckModel>>>?, response: Response<BasicResponse<List<UserDeckModel>>>?) {
                 if (response != null && response.isSuccessful) {
-                    decksLoaded = true
                     decks = response.body()!!.data.toMutableList()
                     goodCallback()
 
                     Log.d("UserDecks", "Decks loaded")
+                } else {
+                    badCallback()
+                    Log.d("Current User", "Can't get decks")
                 }
             }
 
-            override fun onFailure(call: Call<BasicResponse<List<DeckModel>>>?, t: Throwable?) {
+            override fun onFailure(call: Call<BasicResponse<List<UserDeckModel>>>?, t: Throwable?) {
                 badCallback()
                 Log.d("Current User", "Can't get decks")
             }
 
         })
-    }
-
-    private fun getClient(activity: Activity): GoogleSignInClient {
-        return GoogleAuth.getClientForActivity(activity)
     }
 
     private fun redirectToLoginActivity(activity: Activity){
