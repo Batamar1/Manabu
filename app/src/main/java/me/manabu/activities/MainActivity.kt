@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(R.style.AppTheme);
         setContentView(R.layout.activity_main)
 
         toolbar = findViewById(R.id.mainToolbarInclude)
@@ -65,12 +66,13 @@ class MainActivity : AppCompatActivity() {
         startActivityForResult(i, RC_ACTIVITY_LOGIN)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == RC_ACTIVITY_LOGIN && resultCode == RESULT_OK) {
             Log.d("MainActivity", "onActivityResult ok")
             loadDataForSignedUser()
         } else {
             Log.d("MainActivity", "onActivityResult failed")
+            finish()
         }
     }
 
@@ -95,12 +97,6 @@ class MainActivity : AppCompatActivity() {
         } else {
             super.onBackPressed()
         }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val inflater = menuInflater
-        inflater.inflate(R.menu.menu_main, menu)
-        return true
     }
 
     fun loadDataForSignedUser() {

@@ -9,7 +9,6 @@ import me.manabu.R
 object GoogleAuth{
 
     private var mGoogleSignInOptions: GoogleSignInOptions? = null
-        private set
 
     fun getClientForActivity(activity: Activity): GoogleSignInClient {
         if(mGoogleSignInOptions == null){

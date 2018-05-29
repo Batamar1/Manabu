@@ -9,10 +9,10 @@
     <dimen name="no_decks_icon_size">64dp</dimen>
 
     <!-- Lesson Activity Dimens -->
-    <dimen name="lesson_card_border_radius">2dp</dimen>
-    <dimen name="lesson_card_header_text_size">34sp</dimen>
-    <dimen name="lesson_card_content_header_text_size">20sp</dimen>
-    <dimen name="lesson_card_content_text_size">14sp</dimen>
+    <dimen name="lessons_card_border_radius">2dp</dimen>
+    <dimen name="lessons_card_header_text_size">34sp</dimen>
+    <dimen name="lessons_card_content_header_text_size">20sp</dimen>
+    <dimen name="lessons_card_content_text_size">14sp</dimen>
 
     <dimen name="item_decks_deck_height">48dp</dimen>
     <dimen name="item_decks_deck_title">16sp</dimen>

@@ -14,6 +14,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activities.MainActivity"
+            android:theme="@style/SplashTheme"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,7 +28,7 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".activities.LessonsActivity" />
-        <activity android:name=".activities.RepeatTypeable" />
+        <activity android:name=".activities.ReviewActivity" />
     </application>
 
 </manifest>

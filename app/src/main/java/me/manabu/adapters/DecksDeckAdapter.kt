@@ -90,7 +90,7 @@ class DecksDeckAdapter(context: Context, private val data: MutableList<DeckModel
         }
 
         private fun setLoadingIcon(holder: DecksDeckHolder){
-            holder.action?.onClick {}
+            holder.action?.onClick{}
 
             holder.action?.visibility = GONE
             holder.loader?.visibility = VISIBLE

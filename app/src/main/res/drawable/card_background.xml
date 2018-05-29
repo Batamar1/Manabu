@@ -2,5 +2,5 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
     <solid android:color="@android:color/white"/>
-    <corners android:radius="@dimen/lesson_card_border_radius"/>
+    <corners android:radius="@dimen/lessons_card_border_radius"/>
 </shape>

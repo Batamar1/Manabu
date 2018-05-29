@@ -4,6 +4,7 @@ import android.app.Activity
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
+import android.support.v4.app.Fragment
 import co.zsmb.materialdrawerkt.builders.*
 import co.zsmb.materialdrawerkt.draweritems.badgeable.primaryItem
 import co.zsmb.materialdrawerkt.draweritems.profile.profile
@@ -39,7 +40,7 @@ object NavigationDrawer {
 
     fun build(context: MainActivity): Drawer {
         if (!CurrentUser.isSignedIn()) {
-            throw ExceptionInInitializerError("Account still not initialized \nWhy are you actually trying to build a drawer, when we're still not logged in?")
+            throw ExceptionInInitializerError("Account still not initialized \nWhy are you actually trying to build a drawer, when we're still not signed in?")
         }
 
         initImageLoader()
@@ -125,20 +126,15 @@ object NavigationDrawer {
 
     fun loadUserBackground(activity: Activity) {
         Picasso.with(activity).load(CurrentUser.getAccount().photoUrl).into(object : com.squareup.picasso.Target {
-            override fun onPrepareLoad(placeHolderDrawable: Drawable?) {
-                activity.toast("Navigation Drawer: Loading BG")
-            }
-
-            override fun onBitmapFailed(errorDrawable: Drawable?) {
-                activity.toast("Navigation Drawer: Can't load background")
-            }
-
             override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
                 //Once we getAccount image - update header and variable
                 headerDrawable = BitmapDrawable(activity.resources, FastBlur.blur(bitmap, headerBlur, false))
                 accountHeader.setBackground(headerDrawable)
+            }
 
-                activity.toast("Navigation Drawer: BG was loaded!")
+            override fun onPrepareLoad(placeHolderDrawable: Drawable?) {}
+            override fun onBitmapFailed(errorDrawable: Drawable?) {
+                activity.toast("Navigation Drawer: Can't load user background")
             }
         })
     }

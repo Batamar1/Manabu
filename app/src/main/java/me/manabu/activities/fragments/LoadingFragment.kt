@@ -1,4 +1,4 @@
-package me.manabu.activities.fragments;
+package me.manabu.activities.fragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment

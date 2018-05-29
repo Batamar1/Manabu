@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="1">
+
+    <PreferenceCategory android:title="@string/settings_lessons_category">
+        <ListPreference
+            android:defaultValue="3"
+            android:entries="@array/available_lesson_sizes"
+            android:entryValues="@array/available_lesson_sizes"
+            android:icon="@drawable/ic_baseline_view_carousel_24px"
+            android:key="LESSON_SIZE"
+            android:summary="@string/settings_lesson_size_desc"
+            android:title="@string/settings_lesson_size_title" />
+    </PreferenceCategory>
+</PreferenceScreen>

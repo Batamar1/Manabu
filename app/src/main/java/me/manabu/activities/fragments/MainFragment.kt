@@ -1,4 +1,4 @@
-package me.manabu.activities.fragments;
+package me.manabu.activities.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.fragment_main.*
 import me.manabu.R
 import me.manabu.activities.LessonsActivity
 import me.manabu.activities.MainActivity
+import me.manabu.activities.ReviewActivity
 import me.manabu.modules.CurrentUser
 
 
@@ -54,8 +55,8 @@ class MainFragment : Fragment(), View.OnClickListener, MaterialSpinner.OnItemSel
             startActivity(lessonsIntent)
         }
         mainButtonRepeats -> {
-//            val repeatsIntent = Intent(v.context, RepeatTypeable::class.java)
-//            startActivity(repeatsIntent)
+            val reviewIntent = Intent(v.context, ReviewActivity::class.java)
+            startActivity(reviewIntent)
         }
         else -> { }
     }

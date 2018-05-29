@@ -3,6 +3,6 @@
     <solid android:color="@color/accent"/>
 
     <corners
-        android:topLeftRadius="@dimen/lesson_card_border_radius"
-        android:topRightRadius="@dimen/lesson_card_border_radius" />
+        android:topLeftRadius="@dimen/lessons_card_border_radius"
+        android:topRightRadius="@dimen/lessons_card_border_radius" />
 </shape>

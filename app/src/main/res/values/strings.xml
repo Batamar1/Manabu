@@ -10,7 +10,7 @@
 
     <!-- Loading Fragment -->
     <string name="loading_fragment_text">We are loading your data</string>
-    <string name="loading_fragment_text_failed">Something went wrong. Want to try again?</string>
+    <string name="loading_fragment_text_failed">Something went wrong. \nWant to try again?</string>
 
     <!-- Main Activity -->
     <string name="main_double_exit">Click one more time for app to close.</string>
@@ -24,9 +24,10 @@
     <string name="login_sign_out_failed">Can\'t sign out for some reason</string>
 
     <!-- Lesson Activity -->
-    <string name="lesson_error_get_deck">Can\'t load your lessons. Try again</string>
-    <string name="lesson_card_description_title">Description</string>
-    <string name="lesson_card_mnemonic_title">Mnemonic</string>
+    <string name="lessons_title">Lessons</string>
+    <string name="lessons_error_get_deck">Can\'t load your lessons. Try again</string>
+    <string name="lessons_card_description_title">Description</string>
+    <string name="lessons_card_mnemonic_title">Mnemonic</string>
 
     <!-- Decks Fragment -->
     <string name="decks_deck_text_cards">Cards</string>
@@ -41,11 +42,25 @@
     <string name="no_decks_text">You have no decks to learn</string>
     <string name="no_decks_button">Would you like to add one?</string>
 
-    <!-- Repeat Activity -->
-    <string name="title_activity_repeat_card" translatable="false">RepeatCardActivity</string>
+    <!-- Review Activity -->
+    <string name="reviews_title">Reviews</string>
+
+    <!-- Settings Activity -->
+    <string name="settings_lessons_category">Lessons</string>
+    <string name="settings_lesson_size_title">Lesson size</string>
+    <string name="settings_lesson_size_desc">Number of cards taught in one lesson</string>
+    <string-array name="available_lesson_sizes">
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
 
     <!-- Menu's -->
-    <string name="menu_item">menu_item</string>
     <string name="menu_decks_add">Create</string>
     <string name="decks_title_activity">Decks</string>
 

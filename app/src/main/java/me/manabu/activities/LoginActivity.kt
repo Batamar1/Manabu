@@ -12,12 +12,15 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
+import kotlinx.android.synthetic.main.activity_login.*
 import me.manabu.R
 import me.manabu.modules.CurrentUser
 import me.manabu.modules.GoogleAuth
+import org.jetbrains.anko.act
+import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.toast
 
-class LoginActivity : AppCompatActivity(), View.OnClickListener {
+class LoginActivity : AppCompatActivity() {
 
     companion object {
         const val RC_ACTIVITY_LOGIN = 100
@@ -30,17 +33,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val signInButton = findViewById(R.id.loginButtonGoogle) as Button
-        signInButton.setOnClickListener(this)
-    }
-
-    override fun onClick(v: View) {
-        when (v.id) {
-            R.id.loginButtonGoogle -> {
-                val signInIntent = GoogleAuth.getClientForActivity(this).signInIntent
-                startActivityForResult(signInIntent, RC_LOGIN_GOOGLE)
-            }
-        }
+        loginButtonGoogle.onClick {
+            val signInIntent = GoogleAuth.getClientForActivity(act).signInIntent
+            startActivityForResult(signInIntent, RC_LOGIN_GOOGLE)
+         }
     }
 
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
@@ -74,6 +70,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     override fun onBackPressed() {
         if (doubleBackToExitPressedOnce) {
             super.onBackPressed()
+            finish()
             return
         }
 

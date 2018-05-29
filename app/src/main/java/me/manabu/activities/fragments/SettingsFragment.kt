@@ -1,22 +1,11 @@
-package me.manabu.activities.fragments;
+package me.manabu.activities.fragments
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.support.v7.preference.PreferenceFragmentCompat
 import me.manabu.R
 
-
-class SettingsFragment : Fragment() {
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? = inflater.inflate(
-            R.layout.fragment_settings,
-            container,
-            false)
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
+class SettingsFragment : PreferenceFragmentCompat() {
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        setPreferencesFromResource(R.xml.preferences, rootKey);
     }
-
 }

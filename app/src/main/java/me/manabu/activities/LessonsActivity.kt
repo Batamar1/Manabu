@@ -1,5 +1,6 @@
 package me.manabu.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
@@ -13,6 +14,8 @@ import kotlinx.android.synthetic.main.item_decks_deck.*
 import me.manabu.modules.CurrentUser
 import me.manabu.webapi.Api
 import me.manabu.webapi.models.*
+import org.jetbrains.anko.act
+import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
@@ -22,12 +25,12 @@ class LessonsActivity : AppCompatActivity() {
 
     companion object {
         const val DECK_ID_INTENT = "LESSONS_ACTIVITY_DECK_ID"
+
+        lateinit var availableLessons: MutableList<DeckLevelCardModel>
     }
 
+    private lateinit var toolbar: Toolbar
     private lateinit var currentDeck: UserDeckModel
-    lateinit var availableLessons: MutableList<DeckLevelCardModel>
-
-    lateinit var toolbar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +41,32 @@ class LessonsActivity : AppCompatActivity() {
         receiveAvailableLessons({
             setupPager()
         })
+
+        lessonsFabToReview.onClick {
+            val reviewIntent = Intent(act, ReviewActivity::class.java)
+            reviewIntent.putExtra(ReviewActivity.FROM_LESSONS, true)
+            startActivity(reviewIntent)
+        }
+    }
+
+    private fun setCurrentDeck() {
+        val intent = intent
+        val currentDeckId = intent.getIntExtra(DECK_ID_INTENT, -1)
+        if (currentDeckId == -1) {
+            showErrorAndFinish()
+        } else {
+            currentDeck = CurrentUser.decks[currentDeckId]
+            Log.d("LessonActivity", "Current deck is ${currentDeck.name} [${currentDeck.id}]")
+        }
+    }
+
+    private fun setupToolbar() {
+        toolbar = findViewById(R.id.lessonToolbarInclude)
+        setSupportActionBar(toolbar)
+        supportActionBar!!.setDisplayShowHomeEnabled(true)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.title = getString(R.string.lessons_title)
+        supportActionBar!!.subtitle = currentDeck.name
     }
 
     private fun receiveAvailableLessons(callback: () -> Unit) {
@@ -57,32 +86,11 @@ class LessonsActivity : AppCompatActivity() {
             override fun onFailure(call: Call<BasicResponse<List<DeckLevelModel>>>?, t: Throwable?) {
                 showErrorAndFinish()
             }
-
         })
     }
 
-    private fun setCurrentDeck() {
-        val intent = intent
-        val currentDeckId = intent.getIntExtra(DECK_ID_INTENT, -1)
-        if (currentDeckId == -1) {
-            showErrorAndFinish()
-        } else {
-            currentDeck = CurrentUser.decks[currentDeckId]
-
-            Log.d("LessonActivity", "Current deck is ${currentDeck.name} [${currentDeck.id}]")
-        }
-    }
-
-    private fun setupToolbar() {
-        toolbar = findViewById(R.id.lessonToolbarInclude)
-        setSupportActionBar(toolbar)
-        supportActionBar!!.setDisplayShowHomeEnabled(true)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.title = currentDeck.name
-    }
-
     private fun showErrorAndFinish() {
-        toast(R.string.lesson_error_get_deck)
+        toast(R.string.lessons_error_get_deck)
         Log.d("LessonActivity", "Some error happened. Finishing activity.")
         finish()
     }
@@ -95,21 +103,16 @@ class LessonsActivity : AppCompatActivity() {
         val showOn = availableLessons.size - 1
         lessonCardsPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
             override fun onPageSelected(position: Int) {
-                if(lessonsFabToReview.isShown && position != showOn )
+                if(lessonsFabToReview.isShown && position != showOn ){
                     lessonsFabToReview.hide()
+                }
                 else if(position == showOn){
                     lessonsFabToReview.show()
-                    lessonsFabToReview.
                 }
             }
 
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-
-
-            }
-            override fun onPageScrollStateChanged(state: Int) {
-
-            }
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
+            override fun onPageScrollStateChanged(state: Int) {}
         })
     }
 
